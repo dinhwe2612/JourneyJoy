@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-
+    implementation("com.vipulasri:ticketview:1.1.2")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
