@@ -1,4 +1,4 @@
-package com.example.journeyjoy.screen.homebooking;
+package com.example.journeyjoy.screen.transportbooking;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 
-public class HomeBookingFragment extends BaseFragment {
+public class TransportBookingFragment extends BaseFragment {
     public static Fragment newInstance() {
-        return new HomeBookingFragment();
+        return new TransportBookingFragment();
     }
+
+    TransportBookingViewMvc viewMvc;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        HomeBookingViewMvc homeBookingViewMvc = getCompositionRoot().getViewMvcFactory().getHomeBookingViewMvc(container);
-        return homeBookingViewMvc.getRootView();
+        viewMvc = getCompositionRoot().getViewMvcFactory().getTransportBookingViewMvc(container);
+        return viewMvc.getRootView();
     }
 }

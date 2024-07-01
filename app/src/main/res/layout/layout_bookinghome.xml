@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/element_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.vipulasri.ticketview.TicketView
+                android:id="@+id/ticketViewHotel"
+                android:layout_width="376dp"
+                android:layout_height="286dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:ticketDividerPadding="0dp"
+                app:ticketDividerType="dash"
+                app:ticketElevation="14dp"
+                app:ticketOrientation="horizontal"
+                app:ticketScallopPositionPercent="80"
+                app:ticketScallopRadius="10dp"
+                app:ticketShowBorder="false"
+                app:ticketShowDivider="true" />
+
+            <ImageView
+                android:layout_width="363dp"
+                android:layout_height="212dp"
+                android:src="@drawable/bookinghotel"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewHotel"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewHotel"
+                app:layout_constraintTop_toTopOf="@+id/ticketViewHotel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Hotel"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ticketViewHotel"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewHotel"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewHotel" />
+
+            <com.vipulasri.ticketview.TicketView
+                android:id="@+id/ticketViewTransport"
+                android:layout_width="376dp"
+                android:layout_height="286dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ticketViewHotel"
+                app:ticketDividerPadding="0dp"
+                app:ticketDividerType="dash"
+                app:ticketElevation="14dp"
+                app:ticketOrientation="horizontal"
+                app:ticketScallopPositionPercent="80"
+                app:ticketScallopRadius="10dp"
+                app:ticketShowBorder="false"
+                app:ticketShowDivider="true" />
+
+            <ImageView
+                android:layout_width="363dp"
+                android:layout_height="212dp"
+                android:src="@drawable/bookingtransport"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewTransport"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewTransport"
+                app:layout_constraintTop_toTopOf="@+id/ticketViewTransport" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Transport"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ticketViewTransport"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewTransport"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewTransport" />
+
+            <com.vipulasri.ticketview.TicketView
+                android:id="@+id/ticketViewTrips"
+                android:layout_width="376dp"
+                android:layout_height="286dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ticketViewTransport"
+                app:ticketDividerPadding="0dp"
+                app:ticketDividerType="dash"
+                app:ticketElevation="14dp"
+                app:ticketOrientation="horizontal"
+                app:ticketScallopPositionPercent="80"
+                app:ticketScallopRadius="10dp"
+                app:ticketShowBorder="false"
+                app:ticketShowDivider="true" />
+
+            <ImageView
+                android:layout_width="363dp"
+                android:layout_height="212dp"
+                android:src="@drawable/bookingtrips"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewTrips"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewTrips"
+                app:layout_constraintTop_toTopOf="@+id/ticketViewTrips" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Trips"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ticketViewTrips"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewTrips"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewTrips" />
+
+            <com.vipulasri.ticketview.TicketView
+                android:id="@+id/ticketViewEvents"
+                android:layout_width="376dp"
+                android:layout_height="286dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ticketViewTrips"
+                app:ticketDividerPadding="0dp"
+                app:ticketDividerType="dash"
+                app:ticketElevation="14dp"
+                app:ticketOrientation="horizontal"
+                app:ticketScallopPositionPercent="80"
+                app:ticketScallopRadius="10dp"
+                app:ticketShowBorder="false"
+                app:ticketShowDivider="true" />
+
+            <ImageView
+                android:layout_width="363dp"
+                android:layout_height="212dp"
+                android:src="@drawable/bookingevents"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewEvents"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewEvents"
+                app:layout_constraintTop_toTopOf="@+id/ticketViewEvents" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Events"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ticketViewEvents"
+                app:layout_constraintEnd_toEndOf="@+id/ticketViewEvents"
+                app:layout_constraintStart_toStartOf="@+id/ticketViewEvents" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>

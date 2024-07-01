@@ -8,5 +8,7 @@ public interface NavBottomViewMvc extends ObservableViewMvc<NavBottomViewMvc.Lis
     interface Listener {
         void onNavBottomClick(int id);
     }
+    void hideNavBottom();
+    void showNavBottom();
     FrameLayout getFragmentFrame();
 }

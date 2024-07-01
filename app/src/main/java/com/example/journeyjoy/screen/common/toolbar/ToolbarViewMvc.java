@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.journeyjoy.R;
 import com.example.journeyjoy.screen.common.controllers.BaseActivity;
@@ -38,15 +40,6 @@ public class ToolbarViewMvc extends BaseViewMvc {
 
     public void setTitle(String title) {
         mTitle.setText(title);
-    }
-
-    public void setGravityTitleStart() {
-        mTitle.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
-        mTitle.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-    }
-    public void setGravityTitleCenter() {
-        mTitle.setGravity(Gravity.CENTER);
-        mTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
     }
     public void enableUpButtonAndListen(NavigateUpClickListener listener) {
         if (mNavigateUpClickListener != null) {

@@ -31,7 +31,6 @@ public class HomeViewMvcImpl extends BaseObservableViewMvc<HomeViewMvc.Listener>
         mToolbar = findViewById(R.id.toolbar);
         mToolbarViewMvc = viewMvcFactory.getToolbarViewMvc(mToolbar);
         mToolbarViewMvc.setTitle("Explore the beautiful world!");
-        mToolbarViewMvc.setGravityTitleStart();
         mToolbar.addView(mToolbarViewMvc.getRootView());
     }
 }

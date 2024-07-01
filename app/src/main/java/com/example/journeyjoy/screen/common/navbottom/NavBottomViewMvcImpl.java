@@ -2,6 +2,7 @@ package com.example.journeyjoy.screen.common.navbottom;
 
 
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,7 @@ public class NavBottomViewMvcImpl extends BaseObservableViewMvc<NavBottomViewMvc
                 setProfileUnSelected();
                 setBookingSelected();
                 for (Listener listener : getListeners()) {
+                    Log.d("mBookingLayout", "onClick: ");
                     listener.onNavBottomClick(R.id.bookingLayout);
                 }
             }
@@ -165,6 +167,18 @@ public class NavBottomViewMvcImpl extends BaseObservableViewMvc<NavBottomViewMvc
         mProfileLayout.setBackgroundResource(0);
     }
 
+
+    @Override
+    public void hideNavBottom() {
+        LinearLayout navBottomBar = findViewById(R.id.navBottomBar);
+        navBottomBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNavBottom() {
+        LinearLayout navBottomBar = findViewById(R.id.navBottomBar);
+        navBottomBar.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public FrameLayout getFragmentFrame() {
