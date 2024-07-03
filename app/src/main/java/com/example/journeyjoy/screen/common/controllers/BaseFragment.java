@@ -11,7 +11,7 @@ public class BaseFragment extends Fragment {
     protected ControllerCompositionRoot getCompositionRoot() {
         if (mControllerCompositionRoot == null) {
             mControllerCompositionRoot = new ControllerCompositionRoot(
-                    ((MainActivity) requireActivity()).getActivityCompositionRoot()
+                    ((BaseActivity) requireActivity()).getActivityCompositionRoot()
             );
         }
         return mControllerCompositionRoot;

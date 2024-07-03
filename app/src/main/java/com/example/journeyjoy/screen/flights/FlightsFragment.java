@@ -1,4 +1,4 @@
-package com.example.journeyjoy.screen.transportbooking;
+package com.example.journeyjoy.screen.flights;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,26 +13,30 @@ import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 import com.example.journeyjoy.screen.common.navbottom.HideNavBottom;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
-public class TransportBookingFragment extends BaseFragment implements HideNavBottom, TransportBookingViewMvc.Listener {
+public class FlightsFragment extends BaseFragment implements FlightsViewMvc.Listener, HideNavBottom {
+
     public static Fragment newInstance() {
-        return new TransportBookingFragment();
+        return new FlightsFragment();
     }
 
-    TransportBookingViewMvc viewMvc;
-
-    ScreensNavigator mScreensNavigator;
-
+    FlightsViewMvc viewMvc;
+    ScreensNavigator screensNavigator;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mScreensNavigator = getCompositionRoot().getScreensNavigator();
+        screensNavigator = getCompositionRoot().getScreensNavigator();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewMvc = getCompositionRoot().getViewMvcFactory().getTransportBookingViewMvc(container);
+        viewMvc = getCompositionRoot().getViewMvcFactory().getFlightsViewMvc(container);
         return viewMvc.getRootView();
+    }
+
+    @Override
+    public void onNavigateUpClick() {
+        screensNavigator.navigateUp();
     }
 
     @Override
@@ -45,15 +49,5 @@ public class TransportBookingFragment extends BaseFragment implements HideNavBot
     public void onStop() {
         super.onStop();
         viewMvc.unregisterListener(this);
-    }
-
-    @Override
-    public void onNavigateUpClick() {
-        mScreensNavigator.navigateUp();
-    }
-
-    @Override
-    public void onSearchClick() {
-        mScreensNavigator.toFlights();
     }
 }

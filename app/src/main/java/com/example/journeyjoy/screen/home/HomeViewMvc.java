@@ -7,5 +7,6 @@ import com.example.journeyjoy.screen.common.views.ObservableViewMvc;
 public interface HomeViewMvc extends ObservableViewMvc<HomeViewMvc.Listener> {
     public interface Listener {
         void onSearchClick(String keyword);
+        void onTransportClick();
     }
 }

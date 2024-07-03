@@ -10,14 +10,20 @@ import com.example.journeyjoy.screen.account.AccountViewMvcImpl;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvc;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvcImpl;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
+import com.example.journeyjoy.screen.flights.FlightsViewMvc;
+import com.example.journeyjoy.screen.flights.FlightsViewMvcImpl;
 import com.example.journeyjoy.screen.home.HomeViewMvc;
 import com.example.journeyjoy.screen.home.HomeViewMvcImpl;
 import com.example.journeyjoy.screen.homebooking.HomeBookingViewMvc;
 import com.example.journeyjoy.screen.homebooking.HomeBookingViewMvcImpl;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoViewMvc;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoViewMvcImpl;
+import com.example.journeyjoy.screen.signup.SignInViewMvc;
+import com.example.journeyjoy.screen.signup.SignInViewMvcImpl;
 import com.example.journeyjoy.screen.transportbooking.TransportBookingViewMvc;
 import com.example.journeyjoy.screen.transportbooking.TransportBookingViewMvcImpl;
+import com.example.journeyjoy.screen.welcome.WelcomeViewMvc;
+import com.example.journeyjoy.screen.welcome.WelcomeViewMvcImpl;
 
 public class ViewMvcFactory {
     private final LayoutInflater mLayoutInflater;
@@ -52,5 +58,17 @@ public class ViewMvcFactory {
 
     public TransportBookingViewMvc getTransportBookingViewMvc(@Nullable ViewGroup container) {
         return new TransportBookingViewMvcImpl(mLayoutInflater, container, this);
+    }
+
+    public SignInViewMvc getSignInViewMvc(@Nullable ViewGroup parent) {
+        return new SignInViewMvcImpl(mLayoutInflater, parent, this);
+    }
+
+    public WelcomeViewMvc getWelcomeViewMvc(@Nullable ViewGroup parent) {
+        return new WelcomeViewMvcImpl(mLayoutInflater, parent, this);
+    }
+
+    public FlightsViewMvc getFlightsViewMvc(@Nullable ViewGroup parent) {
+        return new FlightsViewMvcImpl(mLayoutInflater, parent, this);
     }
 }

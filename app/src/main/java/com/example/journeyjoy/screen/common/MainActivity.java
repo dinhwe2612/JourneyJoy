@@ -1,6 +1,7 @@
 package com.example.journeyjoy.screen.common;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.window.OnBackInvokedDispatcher;
@@ -64,6 +65,7 @@ public class MainActivity extends BaseActivity implements
             }
         }
         if (!isBackPressConsumedByAnyListener) {
+            Log.d("MainActivity", "onBackPressed: ");
             super.onBackPressed();
         }
     }

@@ -1,7 +1,7 @@
-package com.example.journeyjoy.screen.home;
+package com.example.journeyjoy.screen.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,13 @@ import androidx.fragment.app.Fragment;
 import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
-public class HomeFragment extends BaseFragment implements
-        HomeViewMvc.Listener{
+public class WelcomeFragment extends BaseFragment implements WelcomeViewMvc.Listener {
+
     public static Fragment newInstance() {
-        return new HomeFragment();
+        return new WelcomeFragment();
     }
-
+    private WelcomeViewMvc viewMvc;
     ScreensNavigator screensNavigator;
-    HomeViewMvc viewMvc;
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +29,18 @@ public class HomeFragment extends BaseFragment implements
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewMvc = getCompositionRoot().getViewMvcFactory().getHomeViewMvc(container);
-        Log.d("HomeFragment", "onCreateView:");
+        viewMvc = getCompositionRoot().getViewMvcFactory().getWelcomeViewMvc(container);
         return viewMvc.getRootView();
     }
 
     @Override
-    public void onSearchClick(String keyword) {
+    public void onSignUpClicked() {
+        screensNavigator.toSignIn();
+    }
 
+    @Override
+    public void onLoginClicked() {
+        screensNavigator.toSignIn();
     }
 
     @Override
@@ -51,10 +53,5 @@ public class HomeFragment extends BaseFragment implements
     public void onStop() {
         super.onStop();
         viewMvc.unregisterListener(this);
-    }
-
-    @Override
-    public void onTransportClick() {
-        screensNavigator.toTransportBooking();
     }
 }

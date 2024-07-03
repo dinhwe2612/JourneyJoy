@@ -24,10 +24,21 @@ public class HomeViewMvcImpl extends BaseObservableViewMvc<HomeViewMvc.Listener>
     ImageButton mSearchButton;
     Toolbar mToolbar;
     ToolbarViewMvc mToolbarViewMvc;
+
+    ImageButton mTransportBtn;
     public HomeViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_home, parent, false));
         mSearchButton = findViewById(R.id.searchButton);
         mSearchBarText = findViewById(R.id.searchBarText);
+        mTransportBtn = findViewById(R.id.transportBtn);
+        mTransportBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (Listener listener : getListeners()) {
+                    listener.onTransportClick();
+                }
+            }
+        });
         mToolbar = findViewById(R.id.toolbar);
         mToolbarViewMvc = viewMvcFactory.getToolbarViewMvc(mToolbar);
         mToolbarViewMvc.setTitle("Explore the beautiful world!");

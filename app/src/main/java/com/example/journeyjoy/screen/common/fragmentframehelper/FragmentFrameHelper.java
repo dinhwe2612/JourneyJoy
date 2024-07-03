@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.journeyjoy.screen.common.MainActivity;
+import com.example.journeyjoy.screen.common.navbottom.HideNavBottom;
 
 
 public class FragmentFrameHelper {
@@ -34,7 +35,6 @@ public class FragmentFrameHelper {
     }
 
     public void navigateUp() {
-
         // Some navigateUp calls can be "lost" if they happen after the state has been saved
         if (mFragmentManager.isStateSaved()) {
             return;
@@ -51,6 +51,12 @@ public class FragmentFrameHelper {
             removeCurrentFragment();
 
             if (mFragmentManager.popBackStackImmediate()) {
+                // get the fragment from the back stack
+                currentFragment = mFragmentManager.findFragmentById(getFragmentFrameId());
+                if (mActivity instanceof MainActivity) {
+                    boolean showNavBottom = !(currentFragment instanceof HideNavBottom);
+                    ((MainActivity)mActivity).setBottomBarVisible(showNavBottom);
+                }
                 return; // navigated "up" in fragments back-stack
             }
         }
@@ -59,6 +65,10 @@ public class FragmentFrameHelper {
             Fragment parentFragment =
                     ((HierarchicalFragment)currentFragment).getHierarchicalParentFragment();
             if (parentFragment != null) {
+                if (mActivity instanceof MainActivity) {
+                    boolean showNavBottom = !(parentFragment instanceof HideNavBottom);
+                    ((MainActivity)mActivity).setBottomBarVisible(showNavBottom);
+                }
                 replaceFragment(parentFragment, false, true);
                 return; // navigate "up" to hierarchical parent fragment
             }
@@ -76,6 +86,11 @@ public class FragmentFrameHelper {
     }
 
     private void replaceFragment(Fragment newFragment, boolean addToBackStack, boolean clearBackStack) {
+        if (mActivity instanceof MainActivity) {
+            boolean showNavBottom = !(newFragment instanceof HideNavBottom);
+            ((MainActivity)mActivity).setBottomBarVisible(showNavBottom);
+        }
+
         if (clearBackStack) {
             if (mFragmentManager.isStateSaved()) {
                 // If the state is saved we can't clear the back stack. Simply not doing this, but
