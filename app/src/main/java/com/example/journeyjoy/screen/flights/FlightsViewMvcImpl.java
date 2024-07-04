@@ -17,7 +17,9 @@ import com.example.journeyjoy.screen.flights.flightdatelistview.FlightDateViewAd
 import com.example.journeyjoy.screen.flights.flightinfolistview.FlightDateViewDecorator;
 import com.example.journeyjoy.screen.flights.flightinfolistview.FlightInfoViewAdapter;
 
-public class FlightsViewMvcImpl extends BaseObservableViewMvc<FlightsViewMvc.Listener> implements FlightsViewMvc {
+public class FlightsViewMvcImpl extends BaseObservableViewMvc<FlightsViewMvc.Listener> implements
+        FlightsViewMvc,
+        FlightInfoViewAdapter.Listener {
 
     Toolbar mToolbar;
     ToolbarViewMvc mToolbarViewMvc;
@@ -41,7 +43,7 @@ public class FlightsViewMvcImpl extends BaseObservableViewMvc<FlightsViewMvc.Lis
         mFlightDates.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mFlightInfos = findViewById(R.id.flightInfoList);
         mFlightInfos.addItemDecoration(new FlightDateViewDecorator(25, 25));
-        mFlightInfos.setAdapter(new FlightInfoViewAdapter());
+        mFlightInfos.setAdapter(new FlightInfoViewAdapter(this));
         mFlightInfos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         ImageButton filterBtn = findViewById(R.id.filterBtn);
         filterBtn.setOnClickListener(v -> {
@@ -49,5 +51,12 @@ public class FlightsViewMvcImpl extends BaseObservableViewMvc<FlightsViewMvc.Lis
                 listener.onFilterClick();
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        for (Listener listener : getListeners()) {
+            listener.onFlightInfoClick(position);
+        }
     }
 }

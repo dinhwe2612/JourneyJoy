@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/element_toolbar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/travelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Traveller"
+            android:textSize="20dp"
+            android:layout_marginStart="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/travellerRV"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/travelText"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_below="@+id/travellerRV"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_selected" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Selected"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/booked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_below="@+id/travellerRV"
+            android:layout_toEndOf="@id/selected"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_booked" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Booked"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_below="@+id/travellerRV"
+            android:layout_toEndOf="@id/booked"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <View
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_available" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="Available"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/aText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_marginStart="40dp"
+            android:layout_below="@+id/selected"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_marginStart="60dp"
+            android:layout_below="@+id/selected"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@id/aText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_marginEnd="60dp"
+            android:layout_below="@+id/selected"
+            android:layout_marginTop="10dp"
+            android:layout_alignRight="@id/dText"/>
+        <TextView
+            android:id="@+id/dText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_marginEnd="40dp"
+            android:layout_below="@+id/selected"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/info"
+            android:layout_below="@+id/aText"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seatListA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="35dp"
+                    android:layout_alignParentStart="true"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seatListB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_toEndOf="@id/seatListA"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seatListD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="35dp"
+                    android:layout_alignParentEnd="true"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seatListC"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="17dp"
+                    android:layout_toStartOf="@id/seatListD"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/seatNumber"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottomsheet">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/totalText"
+                android:layout_marginBottom="24dp"
+                android:text="Your seats"
+                android:textColor="#01635D"
+                android:textSize="20dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:id="@+id/totalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/continueBtn"
+                android:layout_marginBottom="24dp"
+                android:text="Total price"
+                android:textColor="#01635D"
+                android:textSize="20dp"
+                android:layout_marginStart="20dp"/>
+
+
+            <TextView
+                android:id="@+id/detailSeatText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/totalPriceText"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="24dp"
+                android:text="Traveller 1/Seat 2A"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/totalPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:text="$50.00"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_above="@id/continueBtn"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/continueBtn"
+                android:layout_width="359dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#FEA36B"
+                android:src="@drawable/round_savechanges"
+                android:text="Continue"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="15dp"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

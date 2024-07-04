@@ -20,6 +20,8 @@ import com.example.journeyjoy.screen.homebooking.HomeBookingViewMvc;
 import com.example.journeyjoy.screen.homebooking.HomeBookingViewMvcImpl;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoViewMvc;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoViewMvcImpl;
+import com.example.journeyjoy.screen.selectseats.SelectSeatsViewMvc;
+import com.example.journeyjoy.screen.selectseats.SelectSeatsViewMvcImpl;
 import com.example.journeyjoy.screen.signup.SignInViewMvc;
 import com.example.journeyjoy.screen.signup.SignInViewMvcImpl;
 import com.example.journeyjoy.screen.transportbooking.TransportBookingViewMvc;
@@ -76,5 +78,9 @@ public class ViewMvcFactory {
 
     public FiltersViewMvc getFiltersViewMvc(@Nullable ViewGroup parent) {
         return new FiltersViewMvcImpl(mLayoutInflater, parent, this);
+    }
+
+    public SelectSeatsViewMvc getSelectSeatsViewMvc(@Nullable ViewGroup parent) {
+        return new SelectSeatsViewMvcImpl(mLayoutInflater, parent, this);
     }
 }

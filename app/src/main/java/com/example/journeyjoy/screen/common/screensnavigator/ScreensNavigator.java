@@ -9,6 +9,7 @@ import com.example.journeyjoy.screen.flights.FlightsFragment;
 import com.example.journeyjoy.screen.home.HomeFragment;
 import com.example.journeyjoy.screen.homebooking.HomeBookingFragment;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoFragment;
+import com.example.journeyjoy.screen.selectseats.SelectSeatsFragment;
 import com.example.journeyjoy.screen.signup.SignInFragment;
 import com.example.journeyjoy.screen.transportbooking.TransportBookingFragment;
 import com.example.journeyjoy.screen.welcome.WelcomeFragment;
@@ -63,5 +64,9 @@ public class ScreensNavigator {
 
     public void toFilters() {
         mFragmentFrameHelper.replaceFragment(FiltersFragment.newInstance());
+    }
+
+    public void toSelectSeats() {
+        mFragmentFrameHelper.replaceFragment(SelectSeatsFragment.newInstance());
     }
 }

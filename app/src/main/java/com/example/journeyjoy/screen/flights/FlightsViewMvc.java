@@ -6,5 +6,7 @@ public interface FlightsViewMvc extends ObservableViewMvc<FlightsViewMvc.Listene
     interface Listener {
         void onNavigateUpClick();
         void onFilterClick();
+
+        void onFlightInfoClick(int position);
     }
 }

@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/ticketview">
+    android:background="@drawable/ticketview"
+    android:id="@+id/ticketView">
     <LinearLayout
         android:id="@+id/fromtoLayout"
         android:layout_width="match_parent"
