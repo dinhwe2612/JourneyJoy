@@ -10,6 +10,8 @@ import com.example.journeyjoy.screen.account.AccountViewMvcImpl;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvc;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvcImpl;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
+import com.example.journeyjoy.screen.filters.FiltersViewMvc;
+import com.example.journeyjoy.screen.filters.FiltersViewMvcImpl;
 import com.example.journeyjoy.screen.flights.FlightsViewMvc;
 import com.example.journeyjoy.screen.flights.FlightsViewMvcImpl;
 import com.example.journeyjoy.screen.home.HomeViewMvc;
@@ -70,5 +72,9 @@ public class ViewMvcFactory {
 
     public FlightsViewMvc getFlightsViewMvc(@Nullable ViewGroup parent) {
         return new FlightsViewMvcImpl(mLayoutInflater, parent, this);
+    }
+
+    public FiltersViewMvc getFiltersViewMvc(@Nullable ViewGroup parent) {
+        return new FiltersViewMvcImpl(mLayoutInflater, parent, this);
     }
 }

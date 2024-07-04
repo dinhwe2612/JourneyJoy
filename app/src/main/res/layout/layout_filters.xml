@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:clipChildren="false">
+        <include layout="@layout/element_toolbar"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Departure"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectTime1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrival"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selectTime2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <hearsilent.discreteslider.DiscreteSlider
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            app:ds_count="499"
+            app:ds_inactiveTrackColor="#D0FDDB"
+            app:ds_maxProgress="250"
+            app:ds_minProgress="50"
+            app:ds_mode="range"
+            app:ds_progressOffset="1"
+            app:ds_thumbColor="#01635D"
+            app:ds_thumbPressedColor="#1FD81B60"
+            app:ds_thumbRadius="6dp"
+            app:ds_tickMarkStep="10"
+            app:ds_tickMarkColor="#089083"
+            app:ds_tickMarkDashLength="1dp"
+            app:ds_tickMarkInactiveColor="#B7DFDB"
+            app:ds_tickMarkPatterns="dot,dash"
+            app:ds_trackColor="#089083"
+            app:ds_trackWidth="4dp"
+            app:ds_valueLabelMode="showOnPressHold|showOnProgressChange"
+            app:ds_valueLabelTextColor="#FFF"
+            app:ds_valueLabelTextSize="16sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/minLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_endsession"
+                android:hint="From"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/minEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:padding="16dp"
+                    android:inputType="number"
+                    android:text="$50"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/maxLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_endsession"
+                android:hint="To"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/maxEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/transparent"
+                    android:padding="16dp"
+                    android:text="$250"
+                    android:inputType="number"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sort by"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival time"
+                android:layout_marginStart="20dp"
+                android:textSize="20dp"
+                android:checked="true"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Departure time"
+                android:layout_marginStart="20dp"
+                android:textSize="20dp" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:layout_marginStart="20dp"
+                android:textSize="20dp" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lowest fare"
+                android:layout_marginStart="20dp"
+                android:textSize="20dp" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duration"
+                android:layout_marginStart="20dp"
+                android:textSize="20dp" />
+
+
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+            <Button
+                android:id="@+id/resetBtn"
+                android:layout_width="180dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                android:src="@drawable/round_endsession"
+                android:backgroundTint="#FFFFFF"
+                android:text="Reset"
+                android:textSize="20dp"
+                android:textColor="#FEA36B"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"/>
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="180dp"
+                android:layout_height="74dp"
+                android:layout_gravity="center"
+                android:backgroundTint="#FEA36B"
+                android:src="@drawable/round_savechanges"
+                android:text="Done"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.journeyjoy.screen.account.AccountFragment;
 import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameHelper;
+import com.example.journeyjoy.screen.filters.FiltersFragment;
 import com.example.journeyjoy.screen.flights.FlightsFragment;
 import com.example.journeyjoy.screen.home.HomeFragment;
 import com.example.journeyjoy.screen.homebooking.HomeBookingFragment;
@@ -58,5 +59,9 @@ public class ScreensNavigator {
 
     public void toFlights() {
         mFragmentFrameHelper.replaceFragment(FlightsFragment.newInstance());
+    }
+
+    public void toFilters() {
+        mFragmentFrameHelper.replaceFragment(FiltersFragment.newInstance());
     }
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.journeyjoy.R;
 
 public class FlightInfoViewAdapter extends RecyclerView.Adapter<FlightInfoViewAdapter.FlightInfoViewHolder> {
+
     @NonNull
     @Override
     public FlightInfoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

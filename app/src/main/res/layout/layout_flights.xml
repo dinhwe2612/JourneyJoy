@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <include layout="@layout/element_toolbar" />
     
@@ -30,11 +31,12 @@
                 android:text="7 flights avaliable New York to London" />
 
             <ImageButton
+                android:id="@+id/filterBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:backgroundTint="@android:color/transparent"
-                android:src="@drawable/ic_filter" />
+                android:src="@drawable/ic_filter"/>
         </RelativeLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/flightInfoList"
@@ -42,7 +44,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="5dp"/>
         
     </LinearLayout>
     

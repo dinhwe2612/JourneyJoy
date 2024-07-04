@@ -1,4 +1,4 @@
-package com.example.journeyjoy.screen.flights;
+package com.example.journeyjoy.screen.filters;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,14 +13,14 @@ import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 import com.example.journeyjoy.screen.common.navbottom.HideNavBottom;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
-public class FlightsFragment extends BaseFragment implements FlightsViewMvc.Listener, HideNavBottom {
+public class FiltersFragment extends BaseFragment implements FiltersViewMvc.Listener, HideNavBottom {
 
     public static Fragment newInstance() {
-        return new FlightsFragment();
+        return new FiltersFragment();
     }
-
-    FlightsViewMvc viewMvc;
+    FiltersViewMvc viewMvc;
     ScreensNavigator screensNavigator;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +30,17 @@ public class FlightsFragment extends BaseFragment implements FlightsViewMvc.List
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewMvc = getCompositionRoot().getViewMvcFactory().getFlightsViewMvc(container);
+        viewMvc = getCompositionRoot().getViewMvcFactory().getFiltersViewMvc(container);
         return viewMvc.getRootView();
     }
-
     @Override
-    public void onNavigateUpClick() {
-        screensNavigator.navigateUp();
+    public void onApplyClicked() {
+
     }
 
     @Override
-    public void onFilterClick() {
-        screensNavigator.toFilters();
+    public void onNavigateUp() {
+        screensNavigator.navigateUp();
     }
 
     @Override

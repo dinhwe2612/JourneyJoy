@@ -2,6 +2,8 @@ package com.example.journeyjoy.screen.flights;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toolbar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,8 +40,14 @@ public class FlightsViewMvcImpl extends BaseObservableViewMvc<FlightsViewMvc.Lis
         mFlightDates.setAdapter(new FlightDateViewAdapter());
         mFlightDates.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mFlightInfos = findViewById(R.id.flightInfoList);
-        mFlightInfos.addItemDecoration(new FlightDateViewDecorator(25));
+        mFlightInfos.addItemDecoration(new FlightDateViewDecorator(25, 25));
         mFlightInfos.setAdapter(new FlightInfoViewAdapter());
         mFlightInfos.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        ImageButton filterBtn = findViewById(R.id.filterBtn);
+        filterBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onFilterClick();
+            }
+        });
     }
 }
