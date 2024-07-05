@@ -25,6 +25,8 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
 
     boolean isEconomy = true;
 
+    int idButton;
+
     public TransportBookingViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_transportbooking, parent, false));
         toolbar = findViewById(R.id.toolbar);
@@ -33,6 +35,7 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         setSwapBtn();
         setChangeColorWhenFocus();
         setEconomy();
+        setClickListeners();
         Button searchBtn = findViewById(R.id.searchBookingBtn);
         searchBtn.setOnClickListener(v -> {
             for (Listener listener : getListeners()) {
@@ -40,6 +43,36 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
             }
         });
     }
+
+    private void setClickListeners() {
+        EditText departureEditText = findViewById(R.id.departureEditText);
+        departureEditText.setOnClickListener(v -> {
+            idButton = R.id.departureEditText;
+            for (Listener listener : getListeners()) {
+                listener.onDateClick();
+            }
+        });
+        EditText returnEditText = findViewById(R.id.returnEditText);
+        returnEditText.setOnClickListener(v -> {
+            idButton = R.id.returnEditText;
+            for (Listener listener : getListeners()) {
+                listener.onDateClick();
+            }
+        });
+        EditText toEditText = findViewById(R.id.toEditText);
+        toEditText.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onSelectDestination();
+            }
+        });
+        EditText fromEditText = findViewById(R.id.fromEditText);
+        fromEditText.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onSelectStartingPoint();
+            }
+        });
+    }
+
     void initToolbar() {
         toolbarViewMvc.setTitle("Transport Booking");
         toolbarViewMvc.enableUpButtonAndListen(new ToolbarViewMvc.NavigateUpClickListener() {
@@ -108,4 +141,66 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
     }
 
 
+    @Override
+    public void updateDate(int year, int month, int day) {
+        if (idButton == R.id.departureEditText) {
+            EditText departureEditText = findViewById(R.id.departureEditText);
+            departureEditText.setText(getDateFormat(year, month, day));
+        }
+        if (idButton == R.id.returnEditText) {
+            EditText returnEditText = findViewById(R.id.returnEditText);
+            returnEditText.setText(getDateFormat(year, month, day));
+        }
+    }
+
+    @Override
+    public void updateStartingPoint(String startingPoint) {
+        EditText fromEditText = findViewById(R.id.fromEditText);
+        fromEditText.setText(startingPoint);
+    }
+
+    @Override
+    public void updateDestination(String destination) {
+        EditText toEditText = findViewById(R.id.toEditText);
+        toEditText.setText(destination);
+    }
+
+    String getDateFormat(int year, int month, int day) {
+        return getMonth(month) + getDay(day) + ", " + year;
+    }
+
+    String getDay(int day) {
+        if (day < 10) return "0" + day;
+        return day + "";
+    }
+    String getMonth(int month) {
+        switch (month) {
+            case 1:
+                return "Jan";
+            case 2:
+                return "Feb";
+            case 3:
+                return "Mar";
+            case 4:
+                return "Apr";
+            case 5:
+                return "May";
+            case 6:
+                return "Jun";
+            case 7:
+                return "Jul";
+            case 8:
+                return "Aug";
+            case 9:
+                return "Sep";
+                case 10:
+                return "Oct";
+            case 11:
+                return "Nov";
+            case 12:
+                return "Dec";
+            default:
+                return "";
+        }
+    }
 }

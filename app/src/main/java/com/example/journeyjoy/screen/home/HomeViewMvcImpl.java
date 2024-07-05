@@ -29,6 +29,11 @@ public class HomeViewMvcImpl extends BaseObservableViewMvc<HomeViewMvc.Listener>
     public HomeViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_home, parent, false));
         mSearchButton = findViewById(R.id.searchButton);
+        mSearchButton.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onSearchClick(mSearchBarText.getText().toString());
+            }
+        });
         mSearchBarText = findViewById(R.id.searchBarText);
         mTransportBtn = findViewById(R.id.transportBtn);
         mTransportBtn.setOnClickListener(new View.OnClickListener() {

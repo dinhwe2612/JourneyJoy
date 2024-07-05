@@ -10,7 +10,7 @@ public abstract class BaseObservable<LISTENER_CLASS> {
         new ConcurrentHashMap<LISTENER_CLASS, Boolean>(1)
     );
     public final void registerListener(LISTENER_CLASS listener){mListeners.add(listener);}
-    public final void unregisterLisnter(LISTENER_CLASS listener){mListeners.remove(listener);}
+    public final void unregisterListener(LISTENER_CLASS listener){mListeners.remove(listener);}
     protected final Set<LISTENER_CLASS> getListeners() {
         return Collections.unmodifiableSet(mListeners);
     }

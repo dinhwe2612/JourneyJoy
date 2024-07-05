@@ -2,19 +2,18 @@ package com.example.journeyjoy.common.di;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.journeyjoy.R;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
+import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
+import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
 import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameHelper;
 import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameWrapper;
-import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvc;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
-import com.example.journeyjoy.screen.home.HomeViewMvc;
+
+import java.util.ArrayList;
 
 public class ControllerCompositionRoot {
     private final ActivityCompositionRoot mActivityCompositionRoot;
@@ -54,5 +53,17 @@ public class ControllerCompositionRoot {
 
     private FragmentFrameWrapper getFragmentFrameWrapper() {
         return (FragmentFrameWrapper)getActivity();
+    }
+
+    public DialogsManager getDialogsManager() {
+        return new DialogsManager(getContext(), getFragmentManager());
+    }
+
+    public DialogsEventBus getDialogsEventBus() {
+        return mActivityCompositionRoot.getDialogsEventBus();
+    }
+
+    public ArrayList<String> getNameOfCities() {
+        return mActivityCompositionRoot.getNameOfCities();
     }
 }

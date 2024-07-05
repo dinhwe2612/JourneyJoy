@@ -6,5 +6,13 @@ public interface TransportBookingViewMvc extends ObservableViewMvc<TransportBook
     interface Listener {
         void onNavigateUpClick();
         void onSearchClick();
+        void onDateClick();
+
+        void onSelectStartingPoint();
+
+        void onSelectDestination();
     }
+    void updateDate(int year, int month, int day);
+    void updateStartingPoint(String startingPoint);
+    void updateDestination(String destination);
 }

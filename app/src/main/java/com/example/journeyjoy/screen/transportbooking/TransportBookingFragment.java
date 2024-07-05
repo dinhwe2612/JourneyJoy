@@ -1,6 +1,7 @@
 package com.example.journeyjoy.screen.transportbooking;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,10 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.journeyjoy.screen.common.controllers.BaseFragment;
+import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
+import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
+import com.example.journeyjoy.screen.common.dialogs.dateselectordialog.DateSelectEvent;
+import com.example.journeyjoy.screen.common.dialogs.pickerdialog.PickEvent;
 import com.example.journeyjoy.screen.common.navbottom.HideNavBottom;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
-public class TransportBookingFragment extends BaseFragment implements HideNavBottom, TransportBookingViewMvc.Listener {
+import java.util.Objects;
+
+public class TransportBookingFragment extends BaseFragment implements
+        HideNavBottom, TransportBookingViewMvc.Listener, DialogsEventBus.Listener {
     public static Fragment newInstance() {
         return new TransportBookingFragment();
     }
@@ -22,10 +30,16 @@ public class TransportBookingFragment extends BaseFragment implements HideNavBot
 
     ScreensNavigator mScreensNavigator;
 
+    DialogsEventBus mDialogsEventBus;
+
+    DialogsManager mDialogsManager;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
+        mDialogsEventBus = getCompositionRoot().getDialogsEventBus();
+        mDialogsManager = getCompositionRoot().getDialogsManager();
     }
 
     @Nullable
@@ -39,12 +53,14 @@ public class TransportBookingFragment extends BaseFragment implements HideNavBot
     public void onStart() {
         super.onStart();
         viewMvc.registerListener(this);
+        mDialogsEventBus.registerListener(this);
     }
 
     @Override
     public void onStop() {
         super.onStop();
         viewMvc.unregisterListener(this);
+        mDialogsEventBus.unregisterListener(this);
     }
 
     @Override
@@ -55,5 +71,38 @@ public class TransportBookingFragment extends BaseFragment implements HideNavBot
     @Override
     public void onSearchClick() {
         mScreensNavigator.toFlights();
+    }
+
+    @Override
+    public void onDateClick() {
+        mDialogsManager.showDateSelectorDialog();
+    }
+
+    @Override
+    public void onSelectStartingPoint() {
+        mDialogsManager.showStartingPointPickerDialog(getCompositionRoot().getNameOfCities());
+    }
+
+    @Override
+    public void onSelectDestination() {
+        mDialogsManager.showDestinationPickerDialog(getCompositionRoot().getNameOfCities());
+    }
+
+    @Override
+    public void onDialogEvent(Object event) {
+        if (event instanceof DateSelectEvent) {
+            DateSelectEvent dateSelectedEvent = (DateSelectEvent) event;
+            viewMvc.updateDate(dateSelectedEvent.getYear(),
+                    dateSelectedEvent.getMonth(), dateSelectedEvent.getDayOfMonth());
+        }
+        if (event instanceof PickEvent) {
+            PickEvent pickEvent = (PickEvent) event;
+            if (Objects.equals(((PickEvent) event).getPickerTitle(), "Starting point")) {
+                viewMvc.updateStartingPoint(pickEvent.getPickerContent());
+            }
+            if (Objects.equals(((PickEvent) event).getPickerTitle(), "Destination")) {
+                viewMvc.updateDestination(pickEvent.getPickerContent());
+            }
+        }
     }
 }
