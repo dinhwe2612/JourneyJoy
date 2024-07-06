@@ -1,14 +1,15 @@
 package com.example.journeyjoy.common.di;
 
-import static java.security.AccessController.getContext;
-
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.journeyjoy.model.city.City;
+import com.example.journeyjoy.model.flight.Flight;
+import com.example.journeyjoy.model.flight.FlightSearchCriteria;
+import com.example.journeyjoy.model.flight.FlightSearchService;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
-import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ActivityCompositionRoot {
     private final CompositionRoot mCompositionRoot;
@@ -30,5 +31,17 @@ public class ActivityCompositionRoot {
 
     public ArrayList<String> getNameOfCities() {
         return mCompositionRoot.getNameOfCities();
+    }
+
+    public void setFlightSearchCriteria(FlightSearchCriteria flightSearchCriteria) {
+        mCompositionRoot.setFlightSearchCriteria(flightSearchCriteria);
+    }
+
+    public List<Flight> getFlightsFromDate(Date date) {
+        return mCompositionRoot.getFlightsFromDate(date);
+    }
+
+    public FlightSearchService getFlightSearchService() {
+        return mCompositionRoot.getFlightSearchService();
     }
 }

@@ -1,20 +1,35 @@
 package com.example.journeyjoy.screen.flights.flightdatelistview;
 
 import android.graphics.Color;
+import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.journeyjoy.R;
+import com.example.journeyjoy.utils.Utils;
+
+import java.util.Date;
+import java.util.List;
 
 public class FlightDateViewAdapter extends RecyclerView.Adapter<FlightDateViewAdapter.FlightDateViewHolder> {
     int selectedPosition = 0;
-    interface Listener {
-        void onSelected(int position);
+
+    List<Date> dates;
+
+    public interface Listener {
+        void onSelectDate(Date date);
+    }
+
+    public FlightDateViewAdapter(List<Date> dates, Listener listener) {
+        this.dates = dates;
+        mListener = listener;
     }
     Listener mListener;
     @NonNull
@@ -26,6 +41,10 @@ public class FlightDateViewAdapter extends RecyclerView.Adapter<FlightDateViewAd
 
     @Override
     public void onBindViewHolder(@NonNull FlightDateViewHolder holder, int position) {
+        String dayOfWeek = Utils.getDayOfWeek(dates.get(position));
+        String dayOfMonth = Utils.getDayOfMonth(dates.get(position).getDate());
+        holder.dayOfWeek.setText(dayOfWeek);
+        holder.dayOfMonth.setText(dayOfMonth);
         if (position == selectedPosition) {
             holder.linearLayout.setBackgroundResource(R.drawable.flightdate);
         } else {
@@ -36,20 +55,27 @@ public class FlightDateViewAdapter extends RecyclerView.Adapter<FlightDateViewAd
             selectedPosition = position;
             notifyItemChanged(position);
             notifyItemChanged(last);
+            if (mListener != null) {
+                mListener.onSelectDate(dates.get(position));
+            }
         });
     }
 
     @Override
     public int getItemCount() {
-        return 7;
+        return dates.size();
     }
 
     static class FlightDateViewHolder extends RecyclerView.ViewHolder {
 
         LinearLayout linearLayout;
+        TextView dayOfWeek;
+        TextView dayOfMonth;
         public FlightDateViewHolder(View itemView) {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.itemFlightdate);
+            dayOfWeek = itemView.findViewById(R.id.dayOfWeek);
+            dayOfMonth = itemView.findViewById(R.id.dayOfMonth);
         }
     }
 }

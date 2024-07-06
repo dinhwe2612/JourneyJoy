@@ -90,7 +90,7 @@
                 android:backgroundTint="@android:color/transparent"
                 android:padding="16dp"
                 android:inputType="date"
-                android:text="Jun 02, 2022"
+                android:text="02 Jun, 2022"
                 android:textSize="16sp"
                 android:editable="false"
                 android:focusable="false"/>
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
                 android:padding="16dp"
-                android:text="Jun 12, 2022"
+                android:text="12 Jun, 2022"
                 android:inputType="date"
                 android:textSize="16sp"
                 android:editable="false"

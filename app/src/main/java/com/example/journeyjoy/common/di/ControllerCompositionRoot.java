@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.journeyjoy.model.flight.Flight;
+import com.example.journeyjoy.model.flight.FlightSearchCriteria;
+import com.example.journeyjoy.model.flight.FlightSearchService;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
 import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
@@ -14,6 +17,8 @@ import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameWra
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ControllerCompositionRoot {
     private final ActivityCompositionRoot mActivityCompositionRoot;
@@ -65,5 +70,18 @@ public class ControllerCompositionRoot {
 
     public ArrayList<String> getNameOfCities() {
         return mActivityCompositionRoot.getNameOfCities();
+    }
+
+    public void setFlightSearchCriteria(FlightSearchCriteria flightSearchCriteria) {
+        mActivityCompositionRoot.setFlightSearchCriteria(flightSearchCriteria);
+    }
+
+    public List<Flight> getFlightsFromDate(Date date) {
+        return mActivityCompositionRoot.getFlightsFromDate(date);
+
+    }
+
+    public FlightSearchService getFlightSearchService() {
+        return mActivityCompositionRoot.getFlightSearchService();
     }
 }

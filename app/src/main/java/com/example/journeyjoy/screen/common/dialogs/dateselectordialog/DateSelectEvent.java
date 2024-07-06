@@ -1,17 +1,14 @@
 package com.example.journeyjoy.screen.common.dialogs.dateselectordialog;
 
+import java.util.Date;
+
 public class DateSelectEvent {
-    private final int year;
-    private final int month;
-    private final int dayOfMonth;
+    Date date;
 
-    public DateSelectEvent(int year, int month, int dayOfMonth) {
-        this.year = year;
-        this.month = month;
-        this.dayOfMonth = dayOfMonth;
+    public DateSelectEvent(Date date) {
+        this.date = date;
     }
-
-    public int getYear() { return year; }
-    public int getMonth() { return month; }
-    public int getDayOfMonth() { return dayOfMonth; }
+    public Date getDate() {
+        return date;
+    }
 }

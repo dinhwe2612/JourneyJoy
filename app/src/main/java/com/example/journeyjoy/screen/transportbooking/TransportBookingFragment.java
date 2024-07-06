@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
 import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
@@ -69,7 +70,8 @@ public class TransportBookingFragment extends BaseFragment implements
     }
 
     @Override
-    public void onSearchClick() {
+    public void onSearchClick(FlightSearchCriteria flightSearchCriteria) {
+        getCompositionRoot().setFlightSearchCriteria(flightSearchCriteria);
         mScreensNavigator.toFlights();
     }
 
@@ -92,8 +94,7 @@ public class TransportBookingFragment extends BaseFragment implements
     public void onDialogEvent(Object event) {
         if (event instanceof DateSelectEvent) {
             DateSelectEvent dateSelectedEvent = (DateSelectEvent) event;
-            viewMvc.updateDate(dateSelectedEvent.getYear(),
-                    dateSelectedEvent.getMonth(), dateSelectedEvent.getDayOfMonth());
+            viewMvc.updateDate(dateSelectedEvent.getDate());
         }
         if (event instanceof PickEvent) {
             PickEvent pickEvent = (PickEvent) event;

@@ -4,6 +4,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,13 @@ import android.widget.ImageView;
 import android.widget.Toolbar;
 
 import com.example.journeyjoy.R;
+import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
 import com.example.journeyjoy.screen.common.views.BaseObservableViewMvc;
+import com.example.journeyjoy.utils.Utils;
+
+import java.util.Date;
 
 public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<TransportBookingViewMvc.Listener> implements TransportBookingViewMvc {
 
@@ -38,8 +43,16 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         setClickListeners();
         Button searchBtn = findViewById(R.id.searchBookingBtn);
         searchBtn.setOnClickListener(v -> {
+            EditText departureEditText = findViewById(R.id.departureEditText);
+            EditText toEditText = findViewById(R.id.toEditText);
+            EditText fromEditText = findViewById(R.id.fromEditText);
+            Log.d("search", "updateDate: " + departureEditText.getText().toString() + " " + toEditText.getText().toString() + " " + fromEditText.getText().toString());
             for (Listener listener : getListeners()) {
-                listener.onSearchClick();
+                listener.onSearchClick(new FlightSearchCriteria(
+                        Utils.convertToCity(fromEditText.getText().toString()),
+                        Utils.convertToCity(toEditText.getText().toString()),
+                        Utils.convertToDate(departureEditText.getText().toString())
+                ));
             }
         });
     }
@@ -142,14 +155,15 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
 
 
     @Override
-    public void updateDate(int year, int month, int day) {
+    public void updateDate(Date date) {
         if (idButton == R.id.departureEditText) {
             EditText departureEditText = findViewById(R.id.departureEditText);
-            departureEditText.setText(getDateFormat(year, month, day));
+            Log.d("date", "updateDate: " + date.getYear() + " " + date.getMonth() + " " + date.getDate());
+            departureEditText.setText(Utils.getDateFormat(date));
         }
         if (idButton == R.id.returnEditText) {
             EditText returnEditText = findViewById(R.id.returnEditText);
-            returnEditText.setText(getDateFormat(year, month, day));
+            returnEditText.setText(Utils.getDateFormat(date));
         }
     }
 
@@ -165,42 +179,5 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         toEditText.setText(destination);
     }
 
-    String getDateFormat(int year, int month, int day) {
-        return getMonth(month) + getDay(day) + ", " + year;
-    }
 
-    String getDay(int day) {
-        if (day < 10) return "0" + day;
-        return day + "";
-    }
-    String getMonth(int month) {
-        switch (month) {
-            case 1:
-                return "Jan";
-            case 2:
-                return "Feb";
-            case 3:
-                return "Mar";
-            case 4:
-                return "Apr";
-            case 5:
-                return "May";
-            case 6:
-                return "Jun";
-            case 7:
-                return "Jul";
-            case 8:
-                return "Aug";
-            case 9:
-                return "Sep";
-                case 10:
-                return "Oct";
-            case 11:
-                return "Nov";
-            case 12:
-                return "Dec";
-            default:
-                return "";
-        }
-    }
 }
