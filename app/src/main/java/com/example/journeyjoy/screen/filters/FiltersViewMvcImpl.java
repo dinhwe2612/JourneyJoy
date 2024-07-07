@@ -1,14 +1,13 @@
 package com.example.journeyjoy.screen.filters;
 
-import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toolbar;
 
@@ -21,7 +20,7 @@ import com.example.journeyjoy.model.flight.FlightFilters;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
 import com.example.journeyjoy.screen.common.views.BaseObservableViewMvc;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import hearsilent.discreteslider.DiscreteSlider;
 
@@ -68,8 +67,76 @@ public class FiltersViewMvcImpl extends BaseObservableViewMvc<FiltersViewMvc.Lis
             @Override
             public void onValueChanged(int minProgress, int maxProgress, boolean fromUser) {
                 super.onValueChanged(minProgress, maxProgress, fromUser);
-                minEditText.setText("$" + String.valueOf(minProgress));
-                maxEditText.setText("$" + String.valueOf(maxProgress));
+                minEditText.setText(String.valueOf(minProgress));
+                maxEditText.setText(String.valueOf(maxProgress));
+            }
+        });
+
+        minEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+                    try {
+                        int minProgress = Integer.parseInt(s.toString());
+                        if (minProgress < 1) {
+                            minEditText.setText("1");
+                            return;
+                        }
+                        if (minProgress > seekBar.getMaxProgress()) {
+                            minEditText.setText(String.valueOf(seekBar.getMaxProgress()));
+                            return;
+                        }
+                        int cursorPosition = minEditText.getSelectionStart();
+                        seekBar.setMinProgress(minProgress - 1);
+                        minEditText.setSelection(Math.min(cursorPosition, s.length()));
+                    } catch (NumberFormatException e) {
+                        Log.e("minEditText", "Invalid number format");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        maxEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+                    try {
+                        int maxProgress = Integer.parseInt(s.toString());
+                        if (maxProgress > 500) {
+                            maxEditText.setText("500");
+                            return;
+                        }
+                        if (maxProgress < seekBar.getMinProgress()) {
+                            maxEditText.setText(String.valueOf(seekBar.getMinProgress()));
+                            return;
+                        }
+                        int cursorPosition = maxEditText.getSelectionStart();
+                        seekBar.setMaxProgress(maxProgress - 1);
+                        maxEditText.setSelection(Math.min(cursorPosition, s.length()));
+                    } catch (NumberFormatException e) {
+                        Log.e("maxEditText", "Invalid number format");
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
@@ -92,8 +159,8 @@ public class FiltersViewMvcImpl extends BaseObservableViewMvc<FiltersViewMvc.Lis
     }
 
     FlightFilters getFilters() {
-        Pair<String, String> timeRange1 = Utils.getTimeRange(timeSelectorViewAdapter1.getSelectedPosition());
-        Pair<String, String> timeRange2 = Utils.getTimeRange(timeSelectorViewAdapter2.getSelectedPosition());
+        Pair<String, String> timeRange1 = FormatUtils.getTimeRange(timeSelectorViewAdapter1.getSelectedPosition());
+        Pair<String, String> timeRange2 = FormatUtils.getTimeRange(timeSelectorViewAdapter2.getSelectedPosition());
         String minDeparture = timeRange1.first, maxDeparture = timeRange1.second;
         String minArrival = timeRange2.first, maxArrival = timeRange2.second;
         int minPrice = seekBar.getMinProgress(), maxPrice = seekBar.getMaxProgress();

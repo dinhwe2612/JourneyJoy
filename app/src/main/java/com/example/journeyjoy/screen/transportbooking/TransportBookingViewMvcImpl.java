@@ -1,9 +1,6 @@
 package com.example.journeyjoy.screen.transportbooking;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +16,7 @@ import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
 import com.example.journeyjoy.screen.common.views.BaseObservableViewMvc;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.Date;
 
@@ -58,16 +55,16 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         setEconomy();
         setClickListeners();
         searchBtn.setOnClickListener(v -> {
-            Log.d("search", "updateDate: " + departureEditText.getText().toString() + " " + toEditText.getText().toString() + " " + fromEditText.getText().toString());
             for (Listener listener : getListeners()) {
                 listener.onSearchClick(new FlightSearchCriteria(
-                        Utils.convertToCity(fromEditText.getText().toString()),
-                        Utils.convertToCity(toEditText.getText().toString()),
-                        Utils.convertToDate(departureEditText.getText().toString()),
+                        FormatUtils.convertToCity(fromEditText.getText().toString()),
+                        FormatUtils.convertToCity(toEditText.getText().toString()),
+                        FormatUtils.convertToDate(departureEditText.getText().toString()),
                         Integer.parseInt(adultEditText.getText().toString()),
                         Integer.parseInt(babyEditText.getText().toString()),
                         Integer.parseInt(petEditText.getText().toString()),
-                        Integer.parseInt(luggageEditText.getText().toString())
+                        Integer.parseInt(luggageEditText.getText().toString()),
+                        (isEconomy ? "Economy" : "Business")
                 ));
             }
         });
@@ -166,10 +163,10 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
     @Override
     public void updateDate(Date date) {
         if (idButton == R.id.departureEditText) {
-            departureEditText.setText(Utils.getDateFormat(date));
+            departureEditText.setText(FormatUtils.getDateFormat(date));
         }
         if (idButton == R.id.returnEditText) {
-            returnEditText.setText(Utils.getDateFormat(date));
+            returnEditText.setText(FormatUtils.getDateFormat(date));
         }
     }
 

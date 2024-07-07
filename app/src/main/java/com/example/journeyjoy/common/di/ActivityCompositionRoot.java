@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.model.flight.FlightSearchService;
+import com.example.journeyjoy.model.ticket.TicketRepository;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
 
 import java.util.ArrayList;
@@ -47,5 +48,9 @@ public class ActivityCompositionRoot {
 
     public Flight getFlight(String flightNumber) {
         return mCompositionRoot.getFlight(flightNumber);
+    }
+
+    public TicketRepository getTicketRepository() {
+        return mCompositionRoot.getTicketRepository();
     }
 }

@@ -2,7 +2,9 @@ package com.example.journeyjoy.screen.common.screensnavigator;
 
 import android.util.Log;
 
+import com.example.journeyjoy.model.ticket.Ticket;
 import com.example.journeyjoy.screen.account.AccountFragment;
+import com.example.journeyjoy.screen.boardingpass.BoardingPassFragment;
 import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameHelper;
 import com.example.journeyjoy.screen.filters.FiltersFragment;
 import com.example.journeyjoy.screen.flights.FlightsFragment;
@@ -67,6 +69,10 @@ public class ScreensNavigator {
     }
 
     public void toSelectSeats(String flightNumber) {
-        mFragmentFrameHelper.replaceFragment(SelectSeatsFragment.newInstance(flightNumber));
+        mFragmentFrameHelper.replaceFragmentDontAddToBackstack(SelectSeatsFragment.newInstance(flightNumber));
+    }
+
+    public void toBoardingPass(String ticketNumber) {
+        mFragmentFrameHelper.replaceFragmentDontAddToBackstack(BoardingPassFragment.newInstance(ticketNumber));
     }
 }

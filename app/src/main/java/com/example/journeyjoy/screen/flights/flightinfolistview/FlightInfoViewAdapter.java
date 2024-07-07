@@ -6,12 +6,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.journeyjoy.R;
 import com.example.journeyjoy.model.flight.Flight;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -47,9 +46,9 @@ public class FlightInfoViewAdapter extends RecyclerView.Adapter<FlightInfoViewAd
         holder.fromCode.setText(flights.get(position).getDestination().getAbbreviation());
         holder.fromName.setText(flights.get(position).getDestination().getName());
         Date date = flights.get(position).getFlightDate();
-        holder.date.setText(Utils.formatFlightDate(date));
+        holder.date.setText(FormatUtils.formatFlightDate(date));
         holder.time.setText(flights.get(position).getFlightTime());
-        holder.price.setText(Utils.formatFlightPrice(flights.get(position).getPrice()));
+        holder.price.setText(FormatUtils.formatFlightPrice(flights.get(position).getPrice()));
         holder.number.setText(flights.get(position).getFlightNumber());
         holder.ticketView.setOnClickListener(v -> {
             listener.onFlightInfoClicked(flights.get(position).getFlightNumber());

@@ -1,10 +1,13 @@
 package com.example.journeyjoy.screen.account;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.journeyjoy.R;
@@ -19,6 +22,11 @@ public class AccountViewMvcImpl extends BaseObservableViewMvc<AccountViewMvc.Lis
     Toolbar toolbar;
     ToolbarViewMvc toolbarViewMvc;
     Button accountInfoBtn;
+    Button paymentCardBtn;
+    Button savedBtn;
+    Button bookingHistoryBtn;
+    Button settingsBtn;
+
     public AccountViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_account, parent, false));
         toolbar = findViewById(R.id.toolbar);
@@ -29,14 +37,46 @@ public class AccountViewMvcImpl extends BaseObservableViewMvc<AccountViewMvc.Lis
         accountInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(
-                        "AccountViewMvcImpl",
-                        "onPersonalInfoClicked"
-                );
                 for (Listener listener : getListeners()) {
                     listener.onPersonalInfoClicked();
                 }
             }
         });
+        paymentCardBtn = findViewById(R.id.paymentCardBtn);
+        paymentCardBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onAnotherClick();
+            }
+        });
+        savedBtn = findViewById(R.id.savedBtn);
+        savedBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onAnotherClick();
+            }
+        });
+        bookingHistoryBtn = findViewById(R.id.bookingHistoryBtn);
+        bookingHistoryBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onAnotherClick();
+            }
+        });
+        settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.onAnotherClick();
+                }
+        });
+    }
+
+    @Override
+    public void loadPersonalInfo(String firstname, String lastname) {
+        TextView fullName = findViewById(R.id.fullName);
+        fullName.setText(firstname + " " + lastname);
+    }
+
+    @Override
+    public void loadAvatar(Bitmap bitmap) {
+        ImageView avatar = findViewById(R.id.avatar);
+        avatar.setImageBitmap(bitmap);
     }
 }

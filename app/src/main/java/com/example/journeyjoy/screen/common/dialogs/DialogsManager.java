@@ -40,4 +40,9 @@ public class DialogsManager {
         PickerDialog dialog = PickerDialog.newInstance("Destination", "Select a destination", "OK", nameOfCities);
         dialog.show(mFragmentManager, "destination_dialog");
     }
+
+    public void showFunctionBeingDevelopedDialog() {
+        InfoDialog dialog = InfoDialog.newInstance("Notification", "This function will be developed in the future", "Return");
+        dialog.show(mFragmentManager, "function_being_developed_dialog");
+    }
 }

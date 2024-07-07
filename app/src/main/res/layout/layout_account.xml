@@ -8,12 +8,15 @@
     <include layout="@layout/element_toolbar"/>
 
     <ImageView
+        android:id="@+id/avatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@drawable/bookingevents" />
+        android:src="@drawable/bookingevents"
+        android:scaleType="centerCrop"/>
 
     <TextView
+        android:id="@+id/fullName"
         android:layout_width="184dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

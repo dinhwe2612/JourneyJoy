@@ -7,13 +7,30 @@
     android:orientation="vertical">
     <include layout="@layout/element_toolbar"/>
 
-
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:src="@drawable/bookingevents"/>
+        android:background="@drawable/round_endsession">
+
+        <ImageButton
+            android:id="@+id/choosePhotoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:elevation="100dp"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/bookingevents"
+            android:scaleType="centerCrop"/>
+    </RelativeLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/firstnameLayout"
@@ -34,6 +51,25 @@
             android:text="Victoria"
             android:textSize="16sp" />
 
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lastnameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Last Name"
+        android:layout_gravity="center"
+        android:background="@drawable/round_endsession">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastnameEditText"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/transparent"
+            android:padding="16dp"
+            android:text="Yoker"
+            android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -76,28 +112,10 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/lastnameLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Last Name"
-        android:layout_gravity="center"
-        android:background="@drawable/round_endsession">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/lastnameEditText"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/transparent"
-            android:padding="16dp"
-            android:text="Yoker"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/endsessionBtn"
+        android:id="@+id/saveChangesBtn"
         android:layout_width="359dp"
         android:layout_height="74dp"
         android:layout_gravity="center"

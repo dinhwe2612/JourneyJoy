@@ -1,6 +1,6 @@
 package com.example.journeyjoy.model.flight;
 
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +44,8 @@ public class FlightFilters {
     public List<Flight> filterFlights(List<Flight> flights) {
         List<Flight> filteredFlights = new ArrayList<>();
         for (Flight flight : flights) {
-            if (!Utils.inRange(flight.getFlightTime(), minDeparture, maxDeparture)) continue;
-            if (!Utils.inRange(flight.getPrice(), minPrice, maxPrice)) continue;
+            if (!FormatUtils.inRange(flight.getFlightTime(), minDeparture, maxDeparture)) continue;
+            if (!FormatUtils.inRange(flight.getPrice(), minPrice, maxPrice)) continue;
             filteredFlights.add(flight);
         }
         if (sortBy == SortBy.DEPARTURE) {

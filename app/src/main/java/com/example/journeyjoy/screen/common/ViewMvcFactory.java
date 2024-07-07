@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.screen.account.AccountViewMvc;
 import com.example.journeyjoy.screen.account.AccountViewMvcImpl;
+import com.example.journeyjoy.screen.boardingpass.BoardingPassMvc;
+import com.example.journeyjoy.screen.boardingpass.BoardingPassMvcImpl;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvc;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvcImpl;
 import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
@@ -83,5 +85,9 @@ public class ViewMvcFactory {
 
     public SelectSeatsViewMvc getSelectSeatsViewMvc(@Nullable ViewGroup parent) {
         return new SelectSeatsViewMvcImpl(mLayoutInflater, parent, this);
+    }
+
+    public BoardingPassMvc getBoardingPassMvc(@Nullable ViewGroup parent) {
+        return new BoardingPassMvcImpl(mLayoutInflater, parent, this);
     }
 }

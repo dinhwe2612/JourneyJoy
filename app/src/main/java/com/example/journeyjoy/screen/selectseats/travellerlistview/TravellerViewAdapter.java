@@ -1,4 +1,4 @@
-package com.example.journeyjoy.screen.selectseats.travellerlsitview;
+package com.example.journeyjoy.screen.selectseats.travellerlistview;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -73,7 +73,7 @@ public class TravellerViewAdapter extends RecyclerView.Adapter<TravellerViewAdap
         return selectedPosition == numTraveller - 1;
     }
 
-    class TravellerViewHolder extends RecyclerView.ViewHolder {
+    static class TravellerViewHolder extends RecyclerView.ViewHolder {
         LinearLayout linearLayout;
         TextView numTraveller;
         public TravellerViewHolder(View itemView) {

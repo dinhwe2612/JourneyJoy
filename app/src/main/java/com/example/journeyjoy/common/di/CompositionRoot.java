@@ -1,14 +1,12 @@
 package com.example.journeyjoy.common.di;
 
-import android.app.Dialog;
-
 import com.example.journeyjoy.model.city.City;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.model.flight.FlightSearchService;
+import com.example.journeyjoy.model.ticket.TicketRepository;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
-import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +18,8 @@ public class CompositionRoot {
     ArrayList<City> mCities;
     ArrayList<Flight> mFlights;
     FlightSearchService mFlightSearchService;
+
+    TicketRepository mTicketRepository;
 
     public DialogsEventBus getDialogsEventBus() {
         if (mDialogsEventBus == null) {
@@ -63,7 +63,7 @@ public class CompositionRoot {
                     City destination = cities.get(1);
                     String flightNumber = "NY" + (100 + i);
                     String flightTime = ((5 + i) % 12 + 1) + ":00 AM";
-                    Date flightDate = Utils.createDate(2024, Calendar.JULY + 1, 6);
+                    Date flightDate = FormatUtils.createDate(2024, Calendar.JULY + 1, 6);
                     int price = 50 + i * 10;
 
                     mFlights.add(new Flight(origin, destination, flightNumber, flightTime, flightDate, price));
@@ -103,5 +103,12 @@ public class CompositionRoot {
             }
         }
         return null;
+    }
+
+    public TicketRepository getTicketRepository() {
+        if (mTicketRepository == null) {
+            mTicketRepository = new TicketRepository();
+        }
+        return mTicketRepository;
     }
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.model.flight.FlightSearchService;
+import com.example.journeyjoy.model.ticket.TicketRepository;
 import com.example.journeyjoy.screen.common.ViewMvcFactory;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
 import com.example.journeyjoy.screen.common.dialogs.DialogsManager;
@@ -87,5 +88,9 @@ public class ControllerCompositionRoot {
 
     public Flight getFlight(String flightNumber) {
         return mActivityCompositionRoot.getFlight(flightNumber);
+    }
+
+    public TicketRepository getTicketRepository() {
+        return mActivityCompositionRoot.getTicketRepository();
     }
 }

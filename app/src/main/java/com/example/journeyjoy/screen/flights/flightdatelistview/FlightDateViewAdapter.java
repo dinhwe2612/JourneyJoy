@@ -1,8 +1,6 @@
 package com.example.journeyjoy.screen.flights.flightdatelistview;
 
 import android.graphics.Color;
-import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.journeyjoy.R;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -41,8 +39,8 @@ public class FlightDateViewAdapter extends RecyclerView.Adapter<FlightDateViewAd
 
     @Override
     public void onBindViewHolder(@NonNull FlightDateViewHolder holder, int position) {
-        String dayOfWeek = Utils.getDayOfWeek(dates.get(position));
-        String dayOfMonth = Utils.getDayOfMonth(dates.get(position).getDate());
+        String dayOfWeek = FormatUtils.getDayOfWeek(dates.get(position));
+        String dayOfMonth = FormatUtils.getDayOfMonth(dates.get(position).getDate());
         holder.dayOfWeek.setText(dayOfWeek);
         holder.dayOfMonth.setText(dayOfMonth);
         if (position == selectedPosition) {

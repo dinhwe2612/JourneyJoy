@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.journeyjoy.screen.common.dialogs.BaseDialog;
 import com.example.journeyjoy.screen.common.dialogs.DialogsEventBus;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -47,7 +47,7 @@ public class DateSelectorDialog extends BaseDialog implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Date date = Utils.createDate(year, month + 1, dayOfMonth);
+        Date date = FormatUtils.createDate(year, month + 1, dayOfMonth);
         DateSelectEvent event = new DateSelectEvent(date);
         Log.d("DateSelectorDialog", "onDateSet: " + date.getYear() + " " + date.getMonth() + " " + date.getDate());
         dialogsEventBus.postEvent(event);

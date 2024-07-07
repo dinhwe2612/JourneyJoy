@@ -16,8 +16,9 @@ public class FlightSearchCriteria {
     int numChildren;
     int numPets;
     int numLuggages;
+    String classType;
 
-    public FlightSearchCriteria(City origin, City destination, Date departureDate, int numAdults, int numChildren, int numPets, int numLuggages) {
+    public FlightSearchCriteria(City origin, City destination, Date departureDate, int numAdults, int numChildren, int numPets, int numLuggages, String classType) {
         this.origin = origin;
         this.destination = destination;
         this.departureDate = departureDate;
@@ -25,6 +26,7 @@ public class FlightSearchCriteria {
         this.numChildren = numChildren;
         this.numPets = numPets;
         this.numLuggages = numLuggages;
+        this.classType = classType;
     }
 
     public City getOrigin() {
@@ -39,9 +41,6 @@ public class FlightSearchCriteria {
         return departureDate;
     }
 
-    public int getNumberAdults() {
-        return numAdults;
-    }
     public List<Flight> filterFlights(List<Flight> flights) {
         List<Flight> filteredFlights = new ArrayList<>();
         String toName = origin.getName();
@@ -59,5 +58,17 @@ public class FlightSearchCriteria {
 
     public int getNumberOfTravelers() {
         return numAdults + numChildren;
+    }
+
+    public int getNumberAdults() {
+        return numAdults;
+    }
+
+    public int getNumberChildren() {
+        return numChildren;
+    }
+
+    public String getClassType() {
+        return classType;
     }
 }

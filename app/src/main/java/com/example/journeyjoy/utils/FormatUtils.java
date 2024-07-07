@@ -10,11 +10,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
-public class Utils {
+public class FormatUtils {
     private static final String[] monthArray = {
             "Invalid",
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",

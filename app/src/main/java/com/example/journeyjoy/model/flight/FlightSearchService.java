@@ -2,11 +2,9 @@ package com.example.journeyjoy.model.flight;
 
 import android.util.Log;
 
-import com.example.journeyjoy.model.city.City;
-import com.example.journeyjoy.utils.Utils;
+import com.example.journeyjoy.utils.FormatUtils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +51,7 @@ public class FlightSearchService {
         List<Date> dateList = new ArrayList<Date>();
         for (int i = 0; i < 30; ++i) {
             dateList.add(date);
-            date = Utils.increaseDate(date, 1);
+            date = FormatUtils.increaseDate(date, 1);
         }
         return dateList;
     }
@@ -68,5 +66,16 @@ public class FlightSearchService {
 
     public int getNumberOfTravelers() {
         return currentCriteria.getNumberOfTravelers();
+    }
+
+    public int getNumberOfAdults() {
+        return currentCriteria.getNumberAdults();
+    }
+    public int getNumberOfChildren() {
+        return currentCriteria.getNumberChildren();
+    }
+
+    public String getClassType() {
+        return currentCriteria.getClassType();
     }
 }
