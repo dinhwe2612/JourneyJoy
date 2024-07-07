@@ -14,10 +14,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewAdapter.SeatViewHolder> {
-    boolean isChoosen = false;
-    List<Integer> seatStates = new ArrayList<>(
-            List.of(0, 2, 0, 2, 0, 2, 0)
-    );
+    int colNum;
+
+    public boolean isAvailable(int row) {
+        return seatStates.get(row) == 0;
+    }
+
+    public interface Listener {
+        boolean onSeatClicked(int col, int row);
+    }
+
+    Listener listener;
+
+    List<Integer> seatStates;
+
+    public SeatViewAdapter(int colNum, boolean[] seats, Listener listener) {
+        this.seatStates = new ArrayList<>();
+        for (int i = 0; i < seats.length; i++) {
+            if (seats[i]) {
+                seatStates.add(2);
+            } else {
+                seatStates.add(0);
+            }
+        }
+        this.colNum = colNum;
+        this.listener = listener;
+    }
+
     @NonNull
     @Override
     public SeatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,14 +58,14 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewAdapter.SeatVi
             holder.item.setBackgroundResource(R.drawable.ic_booked);
         }
         holder.item.setOnClickListener(v -> {
-            if (seatStates.get(position) == 1 && isChoosen) {
-                isChoosen = false;
-                seatStates.set(position, 0);
-                holder.item.setBackgroundResource(R.drawable.ic_available);
-            } else if (seatStates.get(position) == 0 && !isChoosen) {
-                isChoosen = true;
-                seatStates.set(position, 1);
-                holder.item.setBackgroundResource(R.drawable.ic_selected);
+            if (listener.onSeatClicked(colNum, position)) {
+                if (seatStates.get(position) == 1) {
+                    seatStates.set(position, 0);
+                    holder.item.setBackgroundResource(R.drawable.ic_available);
+                } else if (seatStates.get(position) == 0) {
+                    seatStates.set(position, 1);
+                    holder.item.setBackgroundResource(R.drawable.ic_selected);
+                }
             }
         });
     }

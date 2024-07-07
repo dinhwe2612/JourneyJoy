@@ -58,12 +58,12 @@ public class CompositionRoot {
             // add some flights
             List<City> cities = getCities();
             if (cities.size() >= 2) {
-                for (int i = 0; i < 10; i++) {
+                for (int i = 0; i < 20; i++) {
                     City origin = cities.get(0);
                     City destination = cities.get(1);
                     String flightNumber = "NY" + (100 + i);
-                    String flightTime = (9 + i % 12) + ":00 AM";
-                    Date flightDate = Utils.createDate(2024, Calendar.JULY + 1, 6 + i);
+                    String flightTime = ((5 + i) % 12 + 1) + ":00 AM";
+                    Date flightDate = Utils.createDate(2024, Calendar.JULY + 1, 6);
                     int price = 50 + i * 10;
 
                     mFlights.add(new Flight(origin, destination, flightNumber, flightTime, flightDate, price));
@@ -94,5 +94,14 @@ public class CompositionRoot {
 
     public List<Flight> getFlightsFromDate(Date date) {
         return getFlightSearchService().getFlightsFromDate(getFlights(), date);
+    }
+
+    public Flight getFlight(String flightNumber) {
+        for (Flight flight : getFlights()) {
+            if (flight.getFlightNumber().equals(flightNumber)) {
+                return flight;
+            }
+        }
+        return null;
     }
 }

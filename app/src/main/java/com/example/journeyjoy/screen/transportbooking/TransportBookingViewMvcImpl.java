@@ -24,61 +24,73 @@ import com.example.journeyjoy.utils.Utils;
 import java.util.Date;
 
 public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<TransportBookingViewMvc.Listener> implements TransportBookingViewMvc {
-
     Toolbar toolbar;
     ToolbarViewMvc toolbarViewMvc;
-
     boolean isEconomy = true;
-
     int idButton;
+    EditText departureEditText;
+    EditText returnEditText;
+    EditText toEditText;
+    EditText fromEditText;
+    EditText adultEditText;
+    EditText babyEditText;
+    EditText petEditText;
+    EditText luggageEditText;
+    ImageButton swapBtn;
 
     public TransportBookingViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_transportbooking, parent, false));
         toolbar = findViewById(R.id.toolbar);
         toolbarViewMvc = viewMvcFactory.getToolbarViewMvc(toolbar);
+        departureEditText = findViewById(R.id.departureEditText);
+        returnEditText = findViewById(R.id.returnEditText);
+        toEditText = findViewById(R.id.toEditText);
+        fromEditText = findViewById(R.id.fromEditText);
+        adultEditText = findViewById(R.id.adultEditText);
+        babyEditText = findViewById(R.id.babyEditText);
+        petEditText = findViewById(R.id.petEditText);
+        luggageEditText = findViewById(R.id.luggageEditText);
+        swapBtn = findViewById(R.id.swapBtn);
+        Button searchBtn = findViewById(R.id.searchBookingBtn);
         initToolbar();
         setSwapBtn();
         setChangeColorWhenFocus();
         setEconomy();
         setClickListeners();
-        Button searchBtn = findViewById(R.id.searchBookingBtn);
         searchBtn.setOnClickListener(v -> {
-            EditText departureEditText = findViewById(R.id.departureEditText);
-            EditText toEditText = findViewById(R.id.toEditText);
-            EditText fromEditText = findViewById(R.id.fromEditText);
             Log.d("search", "updateDate: " + departureEditText.getText().toString() + " " + toEditText.getText().toString() + " " + fromEditText.getText().toString());
             for (Listener listener : getListeners()) {
                 listener.onSearchClick(new FlightSearchCriteria(
                         Utils.convertToCity(fromEditText.getText().toString()),
                         Utils.convertToCity(toEditText.getText().toString()),
-                        Utils.convertToDate(departureEditText.getText().toString())
+                        Utils.convertToDate(departureEditText.getText().toString()),
+                        Integer.parseInt(adultEditText.getText().toString()),
+                        Integer.parseInt(babyEditText.getText().toString()),
+                        Integer.parseInt(petEditText.getText().toString()),
+                        Integer.parseInt(luggageEditText.getText().toString())
                 ));
             }
         });
     }
 
     private void setClickListeners() {
-        EditText departureEditText = findViewById(R.id.departureEditText);
         departureEditText.setOnClickListener(v -> {
             idButton = R.id.departureEditText;
             for (Listener listener : getListeners()) {
                 listener.onDateClick();
             }
         });
-        EditText returnEditText = findViewById(R.id.returnEditText);
         returnEditText.setOnClickListener(v -> {
             idButton = R.id.returnEditText;
             for (Listener listener : getListeners()) {
                 listener.onDateClick();
             }
         });
-        EditText toEditText = findViewById(R.id.toEditText);
         toEditText.setOnClickListener(v -> {
             for (Listener listener : getListeners()) {
                 listener.onSelectDestination();
             }
         });
-        EditText fromEditText = findViewById(R.id.fromEditText);
         fromEditText.setOnClickListener(v -> {
             for (Listener listener : getListeners()) {
                 listener.onSelectStartingPoint();
@@ -99,9 +111,6 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         toolbar.addView(toolbarViewMvc.getRootView());
     }
     void setSwapBtn() {
-        EditText fromEditText = findViewById(R.id.fromEditText);
-        EditText toEditText = findViewById(R.id.toEditText);
-        ImageButton swapBtn = findViewById(R.id.swapBtn);
         swapBtn.setOnClickListener(v -> {
             String temp = fromEditText.getText().toString();
             fromEditText.setText(toEditText.getText().toString());
@@ -157,27 +166,20 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
     @Override
     public void updateDate(Date date) {
         if (idButton == R.id.departureEditText) {
-            EditText departureEditText = findViewById(R.id.departureEditText);
-            Log.d("date", "updateDate: " + date.getYear() + " " + date.getMonth() + " " + date.getDate());
             departureEditText.setText(Utils.getDateFormat(date));
         }
         if (idButton == R.id.returnEditText) {
-            EditText returnEditText = findViewById(R.id.returnEditText);
             returnEditText.setText(Utils.getDateFormat(date));
         }
     }
 
     @Override
     public void updateStartingPoint(String startingPoint) {
-        EditText fromEditText = findViewById(R.id.fromEditText);
         fromEditText.setText(startingPoint);
     }
 
     @Override
     public void updateDestination(String destination) {
-        EditText toEditText = findViewById(R.id.toEditText);
         toEditText.setText(destination);
     }
-
-
 }

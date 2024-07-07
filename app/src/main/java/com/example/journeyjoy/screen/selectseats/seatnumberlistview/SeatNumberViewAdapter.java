@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.journeyjoy.R;
 
 public class SeatNumberViewAdapter extends RecyclerView.Adapter<SeatNumberViewAdapter.SeatNumberViewHolder> {
+
     @NonNull
     @Override
     public SeatNumberViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

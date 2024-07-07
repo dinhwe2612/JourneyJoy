@@ -81,11 +81,15 @@ public class FlightsFragment extends BaseFragment implements
 
     @Override
     public void onSelectDate(Date date) {
-        flightInfoViewAdapter.setFlights(getCompositionRoot().getFlightsFromDate(date));
+        List<Flight> flights = getCompositionRoot().getFlightsFromDate(date);
+        flightInfoViewAdapter.setFlights(flights);
+        String from = getCompositionRoot().getFlightSearchService().getStartingPoint();
+        String to = getCompositionRoot().getFlightSearchService().getDestination();
+        viewMvc.bindNumberOfFlightsStatement(flights.size(), from, to);
     }
 
     @Override
-    public void onFlightInfoClicked(int position) {
-        screensNavigator.toSelectSeats();
+    public void onFlightInfoClicked(String flightNumber) {
+        screensNavigator.toSelectSeats(flightNumber);
     }
 }

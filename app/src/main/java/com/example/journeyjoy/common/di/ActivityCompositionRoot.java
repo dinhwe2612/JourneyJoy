@@ -44,4 +44,8 @@ public class ActivityCompositionRoot {
     public FlightSearchService getFlightSearchService() {
         return mCompositionRoot.getFlightSearchService();
     }
+
+    public Flight getFlight(String flightNumber) {
+        return mCompositionRoot.getFlight(flightNumber);
+    }
 }

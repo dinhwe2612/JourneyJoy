@@ -56,10 +56,10 @@
             android:focusable="true"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            app:ds_count="499"
+            app:ds_count="500"
             app:ds_inactiveTrackColor="#D0FDDB"
-            app:ds_maxProgress="250"
-            app:ds_minProgress="50"
+            app:ds_maxProgress="500"
+            app:ds_minProgress="0"
             app:ds_mode="range"
             app:ds_progressOffset="1"
             app:ds_thumbColor="#01635D"
@@ -97,7 +97,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:padding="16dp"
                     android:inputType="number"
-                    android:text="$50"
+                    android:text="$0"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:padding="16dp"
-                    android:text="$250"
+                    android:text="$500"
                     android:inputType="number"
                     android:textSize="20sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -134,38 +134,45 @@
             android:layout_marginStart="20dp"/>
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:checkedButton="@+id/radioButtonDeparture">
             <RadioButton
+                android:id="@+id/radioButtonArrival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Arrival time"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
             <RadioButton
+                android:id="@+id/radioButtonDeparture"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Departure time"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
             <RadioButton
+                android:id="@+id/radioButtonPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
             <RadioButton
+                android:id="@+id/radioButtonFare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lowest fare"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
             <RadioButton
+                android:id="@+id/radioButtonDuration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Duration"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
 
 
         </RadioGroup>

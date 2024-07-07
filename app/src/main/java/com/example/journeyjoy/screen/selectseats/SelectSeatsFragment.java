@@ -13,8 +13,15 @@ import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
 
 public class SelectSeatsFragment extends BaseFragment implements
         SelectSeatsViewMvc.Listener {
-    public static Fragment newInstance() {
-        return new SelectSeatsFragment();
+
+    private static final String ARG_FLIGHTNUMBER = "flightNumber";
+
+    public static Fragment newInstance(String flightNumber) {
+        Bundle args = new Bundle();
+        args.putString(ARG_FLIGHTNUMBER, flightNumber);
+        SelectSeatsFragment fragment = new SelectSeatsFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
     SelectSeatsViewMvc viewMvc;
     ScreensNavigator screensNavigator;
@@ -27,7 +34,11 @@ public class SelectSeatsFragment extends BaseFragment implements
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        assert getArguments() != null;
+        String flightNumber = getArguments().getString(ARG_FLIGHTNUMBER);
         viewMvc = getCompositionRoot().getViewMvcFactory().getSelectSeatsViewMvc(container);
+        viewMvc.bindFlight(getCompositionRoot().getFlight(flightNumber));
+        viewMvc.bindNumberOfTravelers(getCompositionRoot().getFlightSearchService().getNumberOfTravelers());
         return viewMvc.getRootView();
     }
 
@@ -35,6 +46,11 @@ public class SelectSeatsFragment extends BaseFragment implements
     @Override
     public void onNavigateUp() {
         screensNavigator.navigateUp();
+    }
+
+    @Override
+    public void onContinueClick() {
+
     }
 
     @Override

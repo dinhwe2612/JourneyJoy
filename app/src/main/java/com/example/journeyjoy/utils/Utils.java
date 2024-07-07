@@ -2,6 +2,8 @@ package com.example.journeyjoy.utils;
 
 import android.util.Log;
 
+import androidx.core.util.Pair;
+
 import com.example.journeyjoy.model.city.City;
 
 import java.text.ParseException;
@@ -30,9 +32,9 @@ public class Utils {
         calendar.add(Calendar.DATE, day);
         return calendar.getTime();
     }
-    public static Date createDate(int year, int month, int day) {
+    public static Date createDate(int year, int month, int dayOfMonth) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(year + 1900, month, day);
+        calendar.set(year + 1900, month, dayOfMonth);
         return calendar.getTime();
     }
     public static City convertToCity(String nameAndCode) {
@@ -107,5 +109,55 @@ public class Utils {
         Log.d("Utils", "formatFlightPrice: " + price);
         // $100
         return "$" + price;
+    }
+
+    private static final SimpleDateFormat TIME_FORMAT = new SimpleDateFormat("h:mm a");
+
+    public static boolean inRange(String time, String min, String max) {
+        try {
+            // Parse strings into Date objects
+            Date timeDate = TIME_FORMAT.parse(time);
+            Date minDate = TIME_FORMAT.parse(min);
+            Date maxDate = TIME_FORMAT.parse(max);
+
+            // Check if timeDate is between minDate and maxDate
+            assert timeDate != null;
+            return timeDate.compareTo(minDate) >= 0 && timeDate.compareTo(maxDate) <= 0;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean isLess(String time1, String time2) {
+        try {
+            // Parse strings into Date objects
+            Date date1 = TIME_FORMAT.parse(time1);
+            Date date2 = TIME_FORMAT.parse(time2);
+
+            // Compare dates
+            return date1.before(date2);
+        } catch (ParseException e) {
+            e.printStackTrace(); // Handle parsing exception as needed
+            return false; // Return false if parsing fails
+        }
+    }
+
+    public static boolean inRange(int x, int l, int r) {
+        return x >= l && x <= r;
+    }
+
+    public static Pair<String, String> getTimeRange(int position) {
+        switch (position) {
+            case 0:
+                return new Pair<>("00:00 AM", "06:00 AM");
+            case 1:
+                return new Pair<>("06:00 AM", "12:00 PM");
+            case 2:
+                return new Pair<>("12:00 PM", "06:00 PM");
+            case 3:
+                return new Pair<>("06:00 PM", "12:00 AM");
+        }
+        return null;
     }
 }

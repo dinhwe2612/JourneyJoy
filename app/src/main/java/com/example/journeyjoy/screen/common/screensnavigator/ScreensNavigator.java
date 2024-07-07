@@ -66,7 +66,7 @@ public class ScreensNavigator {
         mFragmentFrameHelper.replaceFragment(FiltersFragment.newInstance());
     }
 
-    public void toSelectSeats() {
-        mFragmentFrameHelper.replaceFragment(SelectSeatsFragment.newInstance());
+    public void toSelectSeats(String flightNumber) {
+        mFragmentFrameHelper.replaceFragment(SelectSeatsFragment.newInstance(flightNumber));
     }
 }

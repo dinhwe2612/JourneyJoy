@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.journeyjoy.model.flight.FlightFilters;
 import com.example.journeyjoy.screen.common.controllers.BaseFragment;
 import com.example.journeyjoy.screen.common.navbottom.HideNavBottom;
 import com.example.journeyjoy.screen.common.screensnavigator.ScreensNavigator;
@@ -33,9 +34,11 @@ public class FiltersFragment extends BaseFragment implements FiltersViewMvc.List
         viewMvc = getCompositionRoot().getViewMvcFactory().getFiltersViewMvc(container);
         return viewMvc.getRootView();
     }
-    @Override
-    public void onApplyClicked() {
 
+    @Override
+    public void onDoneClick(FlightFilters filters) {
+        getCompositionRoot().getFlightSearchService().setCurrentFilters(filters);
+        screensNavigator.navigateUp();
     }
 
     @Override

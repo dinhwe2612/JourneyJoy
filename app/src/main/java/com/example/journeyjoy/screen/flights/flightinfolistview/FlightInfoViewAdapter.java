@@ -19,7 +19,7 @@ import java.util.List;
 public class FlightInfoViewAdapter extends RecyclerView.Adapter<FlightInfoViewAdapter.FlightInfoViewHolder> {
 
     public interface Listener {
-        void onFlightInfoClicked(int position);
+        void onFlightInfoClicked(String flightNumber);
     }
     Listener listener;
     List<Flight> flights;
@@ -52,7 +52,7 @@ public class FlightInfoViewAdapter extends RecyclerView.Adapter<FlightInfoViewAd
         holder.price.setText(Utils.formatFlightPrice(flights.get(position).getPrice()));
         holder.number.setText(flights.get(position).getFlightNumber());
         holder.ticketView.setOnClickListener(v -> {
-            listener.onFlightInfoClicked(position);
+            listener.onFlightInfoClicked(flights.get(position).getFlightNumber());
         });
     }
 

@@ -21,6 +21,15 @@ public class TimeSelectorViewAdapter extends RecyclerView.Adapter<TimeSelectorVi
         return new TimeSelectorViewHolder(view);
     }
 
+    public void setSelectedPosition(int position) {
+        selectedPosition = position;
+        notifyDataSetChanged();
+    }
+
+    public int getSelectedPosition() {
+        return selectedPosition;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull TimeSelectorViewHolder holder, int position) {
         if (position == selectedPosition) {

@@ -12,15 +12,25 @@ import java.util.List;
 
 public class FlightSearchService {
     private FlightSearchCriteria currentCriteria;
+    private FlightFilters currentFilters = new FlightFilters();
 
     public void setCurrentCriteria(FlightSearchCriteria currentCriteria) {
         this.currentCriteria = currentCriteria;
+    }
+
+    public void setCurrentFilters(FlightFilters currentFilters) {
+        this.currentFilters = currentFilters;
+    }
+
+    public void resetFilters() {
+        currentFilters = new FlightFilters();
     }
 
     public List<Flight> getFlightsFromDate(List<Flight> flights, Date date) {
         if (currentCriteria != null) {
             flights = currentCriteria.filterFlights(flights);
         }
+        flights = currentFilters.filterFlights(flights);
         int dateOfMonth = date.getDate();
         int dateMonth = date.getMonth();
         int dateYear = date.getYear();
@@ -54,5 +64,9 @@ public class FlightSearchService {
 
     public String getDestination() {
         return currentCriteria.getDestination().getName();
+    }
+
+    public int getNumberOfTravelers() {
+        return currentCriteria.getNumberOfTravelers();
     }
 }

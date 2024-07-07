@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.screen.account.AccountViewMvc;
 import com.example.journeyjoy.screen.account.AccountViewMvcImpl;
 import com.example.journeyjoy.screen.common.navbottom.NavBottomViewMvc;
