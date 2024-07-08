@@ -18,6 +18,7 @@ import com.example.journeyjoy.screen.common.toolbar.ToolbarViewMvc;
 import com.example.journeyjoy.screen.common.views.BaseObservableViewMvc;
 import com.example.journeyjoy.utils.FormatUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<TransportBookingViewMvc.Listener> implements TransportBookingViewMvc {
@@ -34,6 +35,10 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
     EditText petEditText;
     EditText luggageEditText;
     ImageButton swapBtn;
+    ImageButton shipBtn;
+    ImageButton planeBtn;
+    ImageButton trainBtn;
+    ImageButton carBtn;
 
     public TransportBookingViewMvcImpl(LayoutInflater inflater, ViewGroup parent, ViewMvcFactory viewMvcFactory) {
         setRootView(inflater.inflate(R.layout.layout_transportbooking, parent, false));
@@ -47,7 +52,13 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         babyEditText = findViewById(R.id.babyEditText);
         petEditText = findViewById(R.id.petEditText);
         luggageEditText = findViewById(R.id.luggageEditText);
+        shipBtn = findViewById(R.id.shipBtn);
+        planeBtn = findViewById(R.id.planeBtn);
+        trainBtn = findViewById(R.id.trainBtn);
+        carBtn = findViewById(R.id.carBtn);
         swapBtn = findViewById(R.id.swapBtn);
+        departureEditText.setText(FormatUtils.getDateFormat(FormatUtils.getToday()));
+        returnEditText.setText(FormatUtils.getDateFormat(FormatUtils.getToday()));
         Button searchBtn = findViewById(R.id.searchBookingBtn);
         initToolbar();
         setSwapBtn();
@@ -91,6 +102,21 @@ public class TransportBookingViewMvcImpl extends BaseObservableViewMvc<Transport
         fromEditText.setOnClickListener(v -> {
             for (Listener listener : getListeners()) {
                 listener.onSelectStartingPoint();
+            }
+        });
+        shipBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.showCommingSoonDialog();
+            }
+        });
+        trainBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.showCommingSoonDialog();
+            }
+        });
+        carBtn.setOnClickListener(v -> {
+            for (Listener listener : getListeners()) {
+                listener.showCommingSoonDialog();
             }
         });
     }

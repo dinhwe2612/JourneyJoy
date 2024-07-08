@@ -316,24 +316,28 @@
         android:orientation="horizontal"
         android:layout_marginTop="7dp">
         <ImageButton
+            android:id="@+id/planeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:src="@drawable/ic_plane_selected"
             android:backgroundTint="@android:color/transparent"/>
         <ImageButton
+            android:id="@+id/shipBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_ship_unselected"
             android:backgroundTint="@android:color/transparent"/>
         <ImageButton
+            android:id="@+id/trainBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_train_unselected"
             android:backgroundTint="@android:color/transparent"/>
         <ImageButton
+            android:id="@+id/carBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"

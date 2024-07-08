@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.journeyjoy.model.city.CityRepository;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.model.flight.FlightSearchService;
@@ -69,10 +70,6 @@ public class ControllerCompositionRoot {
         return mActivityCompositionRoot.getDialogsEventBus();
     }
 
-    public ArrayList<String> getNameOfCities() {
-        return mActivityCompositionRoot.getNameOfCities();
-    }
-
     public void setFlightSearchCriteria(FlightSearchCriteria flightSearchCriteria) {
         mActivityCompositionRoot.setFlightSearchCriteria(flightSearchCriteria);
     }
@@ -92,5 +89,9 @@ public class ControllerCompositionRoot {
 
     public TicketRepository getTicketRepository() {
         return mActivityCompositionRoot.getTicketRepository();
+    }
+
+    public CityRepository getCityRepository() {
+        return mActivityCompositionRoot.getCityRepository();
     }
 }

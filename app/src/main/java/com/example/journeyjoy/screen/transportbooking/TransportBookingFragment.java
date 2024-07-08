@@ -82,12 +82,17 @@ public class TransportBookingFragment extends BaseFragment implements
 
     @Override
     public void onSelectStartingPoint() {
-        mDialogsManager.showStartingPointPickerDialog(getCompositionRoot().getNameOfCities());
+        mDialogsManager.showStartingPointPickerDialog(getCompositionRoot().getCityRepository().getNameOfCities());
     }
 
     @Override
     public void onSelectDestination() {
-        mDialogsManager.showDestinationPickerDialog(getCompositionRoot().getNameOfCities());
+        mDialogsManager.showDestinationPickerDialog(getCompositionRoot().getCityRepository().getNameOfCities());
+    }
+
+    @Override
+    public void showCommingSoonDialog() {
+        mDialogsManager.showCommingSoonDialog();
     }
 
     @Override

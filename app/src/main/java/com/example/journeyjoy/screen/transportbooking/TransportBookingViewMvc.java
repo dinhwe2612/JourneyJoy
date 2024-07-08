@@ -14,6 +14,8 @@ public interface TransportBookingViewMvc extends ObservableViewMvc<TransportBook
         void onSelectStartingPoint();
 
         void onSelectDestination();
+
+        void showCommingSoonDialog();
     }
     void updateDate(Date date);
     void updateStartingPoint(String startingPoint);

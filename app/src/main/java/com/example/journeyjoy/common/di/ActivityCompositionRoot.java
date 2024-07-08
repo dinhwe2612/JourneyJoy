@@ -2,6 +2,7 @@ package com.example.journeyjoy.common.di;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.journeyjoy.model.city.CityRepository;
 import com.example.journeyjoy.model.flight.Flight;
 import com.example.journeyjoy.model.flight.FlightSearchCriteria;
 import com.example.journeyjoy.model.flight.FlightSearchService;
@@ -30,9 +31,6 @@ public class ActivityCompositionRoot {
         return mCompositionRoot.getDialogsEventBus();
     }
 
-    public ArrayList<String> getNameOfCities() {
-        return mCompositionRoot.getNameOfCities();
-    }
 
     public void setFlightSearchCriteria(FlightSearchCriteria flightSearchCriteria) {
         mCompositionRoot.setFlightSearchCriteria(flightSearchCriteria);
@@ -52,5 +50,9 @@ public class ActivityCompositionRoot {
 
     public TicketRepository getTicketRepository() {
         return mCompositionRoot.getTicketRepository();
+    }
+
+    public CityRepository getCityRepository() {
+        return mCompositionRoot.getCityRepository();
     }
 }

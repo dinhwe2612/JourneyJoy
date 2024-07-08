@@ -100,9 +100,6 @@ public class PersonalInfoFragment extends BaseFragment implements
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imageUri);
                 SharedPreferencesUtils.saveImage(requireContext(), "avatar", bitmap);
-                // Update the UI with the new avatar if you have an ImageView
-                // ImageView avatarImageView = findViewById(R.id.avatarImageView);
-                // avatarImageView.setImageBitmap(bitmap);
                 viewMvc.loadAvatar(bitmap);
             } catch (IOException e) {
                 throw new RuntimeException(e);

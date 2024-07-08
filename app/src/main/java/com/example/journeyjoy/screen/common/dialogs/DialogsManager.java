@@ -45,4 +45,9 @@ public class DialogsManager {
         InfoDialog dialog = InfoDialog.newInstance("Notification", "This function will be developed in the future", "Return");
         dialog.show(mFragmentManager, "function_being_developed_dialog");
     }
+
+    public void showCommingSoonDialog() {
+        InfoDialog dialog = InfoDialog.newInstance("Notification", "This feature will be coming soon", "Return");
+        dialog.show(mFragmentManager, "comming_soon_dialog");
+    }
 }

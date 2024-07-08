@@ -42,14 +42,15 @@ public class DateSelectorDialog extends BaseDialog implements DatePickerDialog.O
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        return new DatePickerDialog(requireContext(), this, year, month, day);
+        DatePickerDialog dialog = new DatePickerDialog(requireContext(), this, year, month, day);
+        dialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis());
+        return dialog;
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Date date = FormatUtils.createDate(year, month + 1, dayOfMonth);
         DateSelectEvent event = new DateSelectEvent(date);
-        Log.d("DateSelectorDialog", "onDateSet: " + date.getYear() + " " + date.getMonth() + " " + date.getDate());
         dialogsEventBus.postEvent(event);
     }
 }

@@ -35,6 +35,11 @@ public class FormatUtils {
         calendar.set(year + 1900, month, dayOfMonth);
         return calendar.getTime();
     }
+    public static Date getToday() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.YEAR, 1900);
+        return calendar.getTime();
+    }
     public static City convertToCity(String nameAndCode) {
         // name (code)
         String[] split = nameAndCode.split(" ");
@@ -48,10 +53,8 @@ public class FormatUtils {
         Log.d("Utils", "convertToCity: " + name + " " + code);
         return new City(name.toString(), code);
     }
-    public static String removeYear(String date) {
-        return date.substring(0, date.indexOf(','));
-    }
     public static String getDateFormat(Date date) {
+        // dd MMM, yyyy
         String format = getDayOfMonth(date.getDate()) + ' ' + getMonth(date.getMonth()) + ", " + date.getYear();
         return format;
     }
