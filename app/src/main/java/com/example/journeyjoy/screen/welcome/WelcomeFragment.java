@@ -35,7 +35,7 @@ public class WelcomeFragment extends BaseFragment implements WelcomeViewMvc.List
 
     @Override
     public void onSignUpClicked() {
-        screensNavigator.toSignIn();
+        screensNavigator.toSignUp();
     }
 
     @Override

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "104577921891",
+    "project_id": "journeyjoy-f67ea",
+    "storage_bucket": "journeyjoy-f67ea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104577921891:android:986c518ef636fa46651956",
+        "android_client_info": {
+          "package_name": "com.example.journeyjoy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp_RFHNxxLS-6FWJr4bwWteX-uQRHvIqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

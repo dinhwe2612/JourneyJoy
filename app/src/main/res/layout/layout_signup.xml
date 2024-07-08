@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+    <include layout="@layout/element_toolbar"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Great to meet You!"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginTop="110dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up and let's get started"
+        android:textSize="20dp"/>
+    <EditText
+        android:layout_marginTop="50dp"
+        android:id="@+id/emailSignup"
+        android:background="@drawable/round_endsession"
+        android:layout_width="359dp"
+        android:layout_height="74dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="Email"
+        android:textSize="20dp"
+        android:paddingStart="15dp"
+        android:layout_gravity="center_horizontal"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/passSignup"
+        android:background="@drawable/round_endsession"
+        android:layout_width="359dp"
+        android:layout_height="74dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="Password"
+        android:textSize="20dp"
+        android:paddingStart="15dp"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textPassword"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/confirmPassSignup"
+        android:background="@drawable/round_endsession"
+        android:layout_width="359dp"
+        android:layout_height="74dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="Confirm Password"
+        android:textSize="20dp"
+        android:paddingStart="15dp"
+        android:layout_gravity="center_horizontal"
+        android:inputType="textPassword"/>
+    <Button
+        android:id="@+id/SignInBtn3"
+        android:layout_width="359dp"
+        android:layout_height="74dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="#FEA36B"
+        android:src="@drawable/round_savechanges"
+        android:text="Sign Up"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

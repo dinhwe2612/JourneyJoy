@@ -2,17 +2,18 @@ package com.example.journeyjoy.screen.common.screensnavigator;
 
 import android.util.Log;
 
-import com.example.journeyjoy.model.ticket.Ticket;
 import com.example.journeyjoy.screen.account.AccountFragment;
 import com.example.journeyjoy.screen.boardingpass.BoardingPassFragment;
 import com.example.journeyjoy.screen.common.fragmentframehelper.FragmentFrameHelper;
 import com.example.journeyjoy.screen.filters.FiltersFragment;
 import com.example.journeyjoy.screen.flights.FlightsFragment;
+import com.example.journeyjoy.screen.forgotpassword.ForgotPasswordFragment;
 import com.example.journeyjoy.screen.home.HomeFragment;
 import com.example.journeyjoy.screen.homebooking.HomeBookingFragment;
 import com.example.journeyjoy.screen.personalinfo.PersonalInfoFragment;
 import com.example.journeyjoy.screen.selectseats.SelectSeatsFragment;
-import com.example.journeyjoy.screen.signup.SignInFragment;
+import com.example.journeyjoy.screen.signin.SignInFragment;
+import com.example.journeyjoy.screen.signup.SignUpFragment;
 import com.example.journeyjoy.screen.transportbooking.TransportBookingFragment;
 import com.example.journeyjoy.screen.welcome.WelcomeFragment;
 
@@ -74,5 +75,13 @@ public class ScreensNavigator {
 
     public void toBoardingPass(String ticketNumber) {
         mFragmentFrameHelper.replaceFragmentDontAddToBackstack(BoardingPassFragment.newInstance(ticketNumber));
+    }
+
+    public void toSignUp() {
+        mFragmentFrameHelper.replaceFragment(SignUpFragment.newInstance());
+    }
+
+    public void toForgotPassword() {
+        mFragmentFrameHelper.replaceFragment(ForgotPasswordFragment.newInstance());
     }
 }
